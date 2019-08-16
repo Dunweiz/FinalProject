@@ -8,9 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -22,9 +21,11 @@ public class Rating {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@ManyToOne
 	@JoinColumn(name="user_profile_id")
 	private UserProfile userProfile;
 	
+	@ManyToOne
 	@JoinColumn(name="complex_id")
 	private Complex complex;
 	
