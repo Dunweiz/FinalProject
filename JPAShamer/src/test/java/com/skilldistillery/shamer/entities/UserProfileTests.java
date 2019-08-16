@@ -12,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class UserProfileTests {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private UserProfile profile;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,21 +31,23 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception { 
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		profile = em.find(UserProfile.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		profile= null;
 	}
-
-
 	@Test
-	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("testuser", user.getUsername());
-		
+	void test_userprofile_mappings() {
+		assertNotNull(profile);
+		assertEquals("test@email.com", profile.getEmail());
+		assertEquals("testuser", profile.getUser().getUsername());
+		assertEquals("SomeApartment", profile.getComplex().getName());
+		assertEquals("what a great place", profile.getRatings().get(0).getComment());
+		assertEquals("Poop in the Elevator", profile.getComplaints().get(0).getTitle());
+		assertEquals("at least it stopped smelling, now it's petrified", profile.getComments().get(0).getText());
 	}
 
 }

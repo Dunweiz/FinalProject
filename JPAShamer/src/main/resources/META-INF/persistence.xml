@@ -9,6 +9,7 @@
     </provider>
     
 		<class>com.skilldistillery.shamer.entities.User</class>
+		<class>com.skilldistillery.shamer.entities.UserProfile</class>
 	
 
 		<properties>
