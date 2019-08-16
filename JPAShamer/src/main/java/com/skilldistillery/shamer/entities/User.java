@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 
@@ -18,6 +20,7 @@ public class User {
 	private String role;
 	private Boolean active;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="id")
 	private UserProfile profile;
