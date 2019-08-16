@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -15,7 +17,11 @@ public class User {
 	private String password;
 	private String role;
 	private Boolean active;
-
+	
+	@OneToOne
+	@JoinColumn(name="id")
+	private UserProfile profile;
+	
 	public int getId() {
 		return id;
 	}
@@ -60,13 +66,23 @@ public class User {
 		super();
 	}
 
-	public User(int id, String username, String password, String role, Boolean active) {
+	
+
+	public User(String username, String password, String role, Boolean active, UserProfile profile) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.role = role;
 		this.active = active;
+		this.profile = profile;
+	}
+
+	public UserProfile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(UserProfile profile) {
+		this.profile = profile;
 	}
 
 	@Override

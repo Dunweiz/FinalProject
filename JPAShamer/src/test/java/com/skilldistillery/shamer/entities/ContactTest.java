@@ -15,10 +15,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-class ImageTest {
+class ContactTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Image image;
+	private Contact contact;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,13 +33,13 @@ class ImageTest {
 	@BeforeEach
 	void setUp() throws Exception { 
 		em = emf.createEntityManager();
-		image = em.find(Image.class, 1);
+		contact = em.find(Contact.class, 1);
 	}
 	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		image = null;
+		contact = null;
 	}
 	
 	@Disabled
@@ -47,21 +47,34 @@ class ImageTest {
 	void test() {
 		fail("Not yet implemented");
 	}
-	
-	@Test
-	void test_Image_has_id() {
-		assertNotNull(image);
-		assertEquals(1, image.getId());
-	}
 
 	@Test
-	void test_Image_Url_has_Content() {
-		assertNotNull(image.getImageUrl());
+	void test_contact_has_id() {
+		assertNotNull(contact.getId());
+		assertEquals(1, contact.getId());
 	}
 	
 	@Test
-	void test_Image_has_complaint_id() {
-		assertNotNull(image.getComplaint().getId());
-		assertEquals(1, image.getComplaint().getId());
+	void test_contact_has_name() {
+		assertNotNull(contact.getName());
+		assertEquals("Manager", contact.getName());
+	}
+	
+	@Test
+	void test_contact_has_phone() {
+		assertNotNull(contact.getPhone());
+		assertEquals("312-555-5555", contact.getPhone());
+	}
+	
+	@Test
+	void test_contact_has_complex() {
+		assertNotNull(contact.getComplex());
+		assertEquals(1, contact.getComplex().getId());
+	}
+	
+	@Test
+	void test_contact_has_email() {
+		assertNotNull(contact.getEmail());
+		assertEquals("manager@apartment.com", contact.getEmail());
 	}
 }
