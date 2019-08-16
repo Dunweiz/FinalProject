@@ -23,7 +23,7 @@ public class AuthServiceImpl implements AuthService {
 		String encryptedPassword = encoder.encode(plainPassword);
 		user.setPassword(encryptedPassword);
 		user.setEnabled(true);
-		user.setRole("standard");
+		user.setRole("user");
 		repo.saveAndFlush(user);
 		return user;
 	}

@@ -28,12 +28,12 @@ public class ComplexController {
 	private ComplexService svc;
 	
 	@GetMapping("ping")
-	public String ping() {
+	public String ping(Principal principal) {
 		return "pong";
 	}
 	
 	@GetMapping("complex")
-	public List<Complex> index(HttpServletRequest req, HttpServletResponse res){
+	public List<Complex> index(Principal principal, HttpServletRequest req, HttpServletResponse res){
 		return svc.index();
 	}
 	

@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` VARCHAR(40) NOT NULL,
   `password` VARCHAR(400) NOT NULL,
   `role` VARCHAR(20) NULL,
-  `active` TINYINT(1) NULL,
+  `enabled` TINYINT(1) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
@@ -213,11 +213,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `shamedb`;
-INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`) VALUES (1, 'testuser', 'testuser', 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`) VALUES (2, 'Ryan', 'ryan', 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`) VALUES (3, 'Dunwei', 'dunwei', 'admin', true);
-INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`) VALUES (4, 'Hatle', 'hatle', 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`) VALUES (5, 'Chana', 'chana', 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `enabled`) VALUES (1, 'testuser', 'testuser', 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `enabled`) VALUES (2, 'Ryan', 'ryan', 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `enabled`) VALUES (3, 'Dunwei', 'dunwei', 'admin', true);
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `enabled`) VALUES (4, 'Hatle', 'hatle', 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `enabled`) VALUES (5, 'Chana', 'chana', 'user', true);
 
 COMMIT;
 
