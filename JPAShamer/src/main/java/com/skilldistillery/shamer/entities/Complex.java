@@ -34,16 +34,16 @@ public class Complex {
 	@Column(name="num_units")
 	private int	numUnits;
 	
-	@OneToMany(mappedBy"complex")
+	@OneToMany(mappedBy="complex")
 	private List<Contact> contacts;
 	
-	@OneToMany(mappedBy"complex")
+	@OneToMany(mappedBy="complex")
 	private List<Complaint> complaints;
 	
-	@OneToMany(mappedBy"complex")
+	@OneToMany(mappedBy="complex")
 	private List<UserProfile> profiles;
 	
-	@OneToMany(mappedBy"complex")
+	@OneToMany(mappedBy="complex")
 	private List<Rating> ratings;
 	
 	// Add Rating
@@ -194,11 +194,11 @@ public class Complex {
 		this.complaints = complaints;
 	}
 
-	public List<Profile> getProfiles() {
+	public List<UserProfile> getProfiles() {
 		return profiles;
 	}
 
-	public void setProfiles(List<Profile> profiles) {
+	public void setProfiles(List<UserProfile> profiles) {
 		this.profiles = profiles;
 	}
 
@@ -237,7 +237,7 @@ public class Complex {
 	}
 
 	public Complex(int id, String name, String street, String city, String state, String zip, String imageUrl,
-			int numUnits, List<Contact> contacts, List<Complaint> complaints, List<Profile> profiles,
+			int numUnits, List<Contact> contacts, List<Complaint> complaints, List<UserProfile> profiles,
 			List<Rating> ratings) {
 		super();
 		this.id = id;
