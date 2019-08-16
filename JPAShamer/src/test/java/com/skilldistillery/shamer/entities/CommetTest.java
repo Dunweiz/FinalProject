@@ -12,40 +12,37 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
-
-	private static EntityManagerFactory emf;
+class CommetTest {
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ShamerPU");
 	private EntityManager em;
-	private User user;
+	private Comment comment;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("ShamerPU");
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		emf.close();
 	}
 
 	@BeforeEach
-	void setUp() throws Exception { 
+	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		comment = em.find(Comment.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		comment = null;
 	}
 
-
 	@Test
-	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("testuser", user.getUsername());
-		assertEquals("test@email.com", user.getProfile().getEmail());
+	void test_Comment_mapping() {
+		assertNotNull(comment);
+		assertEquals("Cool", comment.getUserProfile().getFirstName());
+		assertEquals("he's right, still poop", comment.getText());
+		assertEquals(1, comment.getComplaint().getId());
 	}
 
 }
