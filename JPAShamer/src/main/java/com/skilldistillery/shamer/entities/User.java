@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 
@@ -16,8 +18,9 @@ public class User {
 	private String username;
 	private String password;
 	private String role;
-	private Boolean active;
+	private Boolean enabled;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="id")
 	private UserProfile profile;
@@ -54,12 +57,12 @@ public class User {
 		this.role = role;
 	}
 
-	public Boolean getActive() {
-		return active;
+	public Boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public User() {
@@ -68,12 +71,12 @@ public class User {
 
 	
 
-	public User(String username, String password, String role, Boolean active, UserProfile profile) {
+	public User(String username, String password, String role, Boolean enabled, UserProfile profile) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.role = role;
-		this.active = active;
+		this.enabled = enabled;
 		this.profile = profile;
 	}
 
@@ -111,7 +114,7 @@ public class User {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("User [id=").append(id).append(", username=").append(username).append(", password=")
-				.append(password).append(", role=").append(role).append(", active=").append(active).append("]");
+				.append(password).append(", role=").append(role).append(", enabled=").append(enabled).append("]");
 		return builder.toString();
 	}
 
