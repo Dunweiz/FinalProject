@@ -45,7 +45,7 @@ class UserTest {
 	void test_User_entity_mapping() {
 		assertNotNull(user);
 		assertEquals("testuser", user.getUsername());
-		
+		assertEquals("test@email.com", user.getProfile().getEmail());
 	}
 
 }
