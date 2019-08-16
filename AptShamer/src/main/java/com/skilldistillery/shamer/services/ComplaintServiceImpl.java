@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.shamer.entities.Complaint;
 import com.skilldistillery.shamer.respositories.ComplaintRepository;
+import com.skilldistillery.shamer.respositories.ComplexRepository;
 
 @Service
 public class ComplaintServiceImpl implements ComplaintService {
@@ -26,12 +27,12 @@ public class ComplaintServiceImpl implements ComplaintService {
 	}
 	
 	public Complaint create(int id, Complaint complaint) {
-		complaint.setComplex(cRepo.findById(id));
+		complaint.setComplex(cRepo.findById(id).get());
 		return repo.saveAndFlush(complaint);
 	}
 	
 	public Complaint update(int id, int cid, Complaint complaint) {
-		complaint.setComplex(cRepo.findById(id));
+		complaint.setComplex(cRepo.findById(id).get());
 		Complaint newComplaint = repo.findById(cid).get();
 		if(newComplaint != null) {
 			newComplaint.setComplex(complaint.getComplex());
@@ -42,6 +43,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 			newComplaint.setTitle(complaint.getTitle());
 			repo.saveAndFlush(newComplaint);
 		}
+		return newComplaint;
 	}
 	
 	public Boolean destroy(int id) {

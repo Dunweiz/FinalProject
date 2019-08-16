@@ -35,10 +35,10 @@ public class ComplaintController {
 	private ImageService iSvc;
 	
 	//Test PostMan
-	@GetMapping("ping")
-	public String testPing() {
-	return "pong";
-	}
+//	@GetMapping("ping")
+//	public String testPing() {
+//	return "pong";
+//	}
 	
 	//Complaints
 	@GetMapping("/complexes/{id}/complaints")
