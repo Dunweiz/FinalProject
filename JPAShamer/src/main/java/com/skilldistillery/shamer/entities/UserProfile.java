@@ -15,6 +15,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 @Entity
 @Table(name="user_profile")
 public class UserProfile {
@@ -31,6 +35,7 @@ public class UserProfile {
 	@JoinColumn(name="complex_id")
 	private Complex complex;
 	
+	@Column(name="email")
 	private String email;
 	
 	@Column(name="first_name")
@@ -45,16 +50,20 @@ public class UserProfile {
 	@Column(name="image_url")
 	private String imageUrl;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "userProfile")
 	private List<Comment> comments;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "userProfile")
 	private List<Complaint> complaints;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "userProfile")
 	@Column(name="user_complex_ratings")
 	private List<Rating> ratings;
 
+	
 	public UserProfile() {
 		super();
 	}

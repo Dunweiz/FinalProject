@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Complex {
@@ -34,15 +36,19 @@ public class Complex {
 	@Column(name="num_units")
 	private int	numUnits;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="complex")
 	private List<Contact> contacts;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="complex")
 	private List<Complaint> complaints;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="complex")
 	private List<UserProfile> profiles;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="complex")
 	private List<Rating> ratings;
 	
