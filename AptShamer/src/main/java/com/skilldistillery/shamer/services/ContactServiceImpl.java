@@ -2,13 +2,21 @@ package com.skilldistillery.shamer.services;
 
 import java.util.List;
 
-import com.skilldistillery.shamer.entities.Contact;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.skilldistillery.shamer.entities.Contact;
+import com.skilldistillery.shamer.respositories.ContactRepository;
+
+@Service
 public class ContactServiceImpl implements ContactService {
 
+	@Autowired
+	private ContactRepository cRepo;
+	
 	@Override
 	public List<Contact> index() {
-		return null;
+		return cRepo.findAll();
 	}
 
 	@Override
