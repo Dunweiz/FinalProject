@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Complaint {
 	@Id
@@ -26,6 +28,7 @@ public class Complaint {
 	private Complex complex;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="user_profile_id")
 	private UserProfile userProfile;
 	
