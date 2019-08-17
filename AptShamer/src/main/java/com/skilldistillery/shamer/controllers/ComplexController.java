@@ -43,12 +43,12 @@ public class ComplexController {
 	}
 	
 	@PostMapping("complex")
-	public Complex create(HttpServletRequest req, HttpServletResponse res, @RequestBody Complex complex) {
+	public Complex create(HttpServletRequest req, HttpServletResponse res, @RequestBody Complex complex, Principal principal) {
 		return svc.create(complex);
 	}
 	
 	@PutMapping("complex/{id}")
-	public Complex undate(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Complex complex) {
+	public Complex undate(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Complex complex, Principal principal) {
 		return svc.update(id, complex);
 	}
 

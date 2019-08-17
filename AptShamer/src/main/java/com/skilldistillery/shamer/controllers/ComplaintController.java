@@ -111,6 +111,4 @@ public class ComplaintController {
 	public Boolean destroyComment(@PathVariable int id) {
 		return comSvc.destroy(id);
 	}
-	
-	
 }

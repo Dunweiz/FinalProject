@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Image {
 
@@ -16,6 +18,7 @@ public class Image {
 	private int id;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="complaint_id")
 	private Complaint complaint;
 	
