@@ -15,7 +15,7 @@ import com.skilldistillery.shamer.entities.User;
 import com.skilldistillery.shamer.services.AuthService;
 
 @RestController
-@CrossOrigin({"*", "http://localhost:4200"})
+@CrossOrigin({"*", "http://localhost:4203"})
 public class AuthController {
 	
 	@Autowired

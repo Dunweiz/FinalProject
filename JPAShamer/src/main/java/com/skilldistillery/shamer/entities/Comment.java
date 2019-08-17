@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Comment {
 	
@@ -28,6 +30,7 @@ public class Comment {
 	private int vote;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="complaint_id")
 	private Complaint complaint;
 	
