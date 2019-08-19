@@ -11,6 +11,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { TemplateComponent } from './components/template/template.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LocationsComponent } from './components/locations/locations.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { LocationsComponent } from './components/locations/locations.component';
     NavigationComponent,
     TemplateComponent,
     NotFoundComponent,
-    LocationsComponent
+    LocationsComponent,
+    LoginComponent,
+    LogoutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
