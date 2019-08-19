@@ -1,3 +1,4 @@
+import { FetchCallsService } from './../../services/fetch-calls.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,13 +11,15 @@ export class HomeComponent implements OnInit {
 
   locationSearch = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private fetchSvc: FetchCallsService) { }
 
   ngOnInit() {
   }
 
-  search() {
-    this.router.navigateByUrl(`/complexes/${this.locationSearch}`);
+  async search() {
+    const search = await this.fetchSvc.searchByApartment(this.locationSearch);
+    const location = search.results[0].formatted_address;
+    this.router.navigateByUrl(`/complexes/${location}`);
   }
 
 }
