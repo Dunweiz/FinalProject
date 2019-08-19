@@ -10,7 +10,7 @@ export class Comment {
   userProfile: UserProfile;
 
   constructor(id?: number, text?: string, commentDate?: Date, vote?: number,
-             complaint?: Complaint, userProfile?: UserProfile){
+              complaint?: Complaint, userProfile?: UserProfile) {
                this.id = id;
                this.text = text;
                this.commentDate = commentDate;
