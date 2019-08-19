@@ -4,7 +4,7 @@ export class Image {
   complaint: Complaint;
   imageUrl: string;
 
-  constructor(id?: number, compliant?: Complaint, imageUrl?: string) {
+  constructor(id?: number, complaint?: Complaint, imageUrl?: string) {
     this.id = id;
     this.complaint = complaint;
     this.imageUrl = imageUrl;
