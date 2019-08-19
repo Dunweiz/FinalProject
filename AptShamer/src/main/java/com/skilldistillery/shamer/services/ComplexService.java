@@ -16,5 +16,7 @@ public interface ComplexService {
 
 	Complex update(int id, Complex complex);
 	
+	List<Complex> complexBySearch(String name);
+	
 
 }

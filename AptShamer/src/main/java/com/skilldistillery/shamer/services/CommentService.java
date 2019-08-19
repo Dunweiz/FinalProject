@@ -8,12 +8,12 @@ public interface CommentService {
 	
 	public List<Comment> index(int id);
 	
-	public Comment show(int id);
+	public Comment show(int id, int cid);
 	
 	public Comment create(int id, Comment comment);
 	
 	public Comment update(int id, int cid, Comment comment);
 	
-	public Boolean destroy(int id);
+	public Boolean destroy(int id, int cid);
 	
 }

@@ -46,9 +46,9 @@ public class ComplaintController {
 		return cSvc.index(id);
 	}
 	
-	@GetMapping("/complaints/{cid}")
-	public Complaint getComplaint(@PathVariable int cid) {
-		return cSvc.show(cid);
+	@GetMapping("complexes/{id}/complaints/{cid}")
+	public Complaint getComplaint(@PathVariable int id, @PathVariable int cid) {
+		return cSvc.show(id, cid);
 	}
 	
 	@PostMapping("/complexes/{id}/complaints")
@@ -61,9 +61,9 @@ public class ComplaintController {
 		return cSvc.update(id, cid, complaint);
 	}
 	
-	@DeleteMapping("/complaints/{id}")
-	public Boolean destroyComplaint(@PathVariable int id) {
-		return cSvc.destroy(id);
+	@DeleteMapping("complexes/{id}/complaints/{cid}")
+	public Boolean destroyComplaint(@PathVariable int id, @PathVariable int cid) {
+		return cSvc.destroy(id, cid);
 	}
 	
 	//Images
@@ -72,10 +72,10 @@ public class ComplaintController {
 		return iSvc.index(id);
 	}
 	
-	@GetMapping("/images/{mid}")
-	public Image oneImage(@PathVariable int mid) {
-		return iSvc.show(mid);
-	}
+//	@GetMapping("complexes/{id}/images/{mid}")
+//	public Image oneImage(@PathVariable int id, @PathVariable int mid) {
+//		return iSvc.show(mid);
+//	}
 	
 	@PostMapping("/complaints/{id}/images")
 	public Image createImage(@PathVariable int id, @RequestBody Image image) {
@@ -93,9 +93,9 @@ public class ComplaintController {
 		return comSvc.index(id);
 	}
 	
-	@GetMapping("/comments/{cid}")
-	public Comment getImageByComment(@PathVariable int cid) {
-		return comSvc.show(cid);
+	@GetMapping("/complaints/{id}/comments/{cid}")
+	public Comment getImageByComment(@PathVariable int id, @PathVariable int cid) {
+		return comSvc.show(id, cid);
 	}
 	
 	@PostMapping("/complaints/{id}/comments")
@@ -107,8 +107,8 @@ public class ComplaintController {
 	public Comment updateCommment(@PathVariable int id, @PathVariable int cid, @RequestBody Comment comment) {
 			return comSvc.update(id, cid, comment);
 		}
-	@DeleteMapping("/comments/{id}")
-	public Boolean destroyComment(@PathVariable int id) {
-		return comSvc.destroy(id);
+	@DeleteMapping("/complaints/{id}/comments/{cid}")
+	public Boolean destroyComment(@PathVariable int id, @PathVariable int cid) {
+		return comSvc.destroy(id, cid);
 	}
 }

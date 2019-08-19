@@ -1,6 +1,7 @@
 package com.skilldistillery.shamer.controllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,24 +33,32 @@ public class ComplexController {
 		return "pong";
 	}
 	
-	@GetMapping("complex")
+	@GetMapping("complexes")
 	public List<Complex> index(Principal principal, HttpServletRequest req, HttpServletResponse res){
 		return svc.index();
 	}
 	
-	@GetMapping("complex/{id}")
-	public Complex show(HttpServletRequest req, HttpServletResponse resp, @PathVariable("id") int id) {
-		return svc.show(id);
-	}
+//	@GetMapping("complexes/{id}")
+//	public Complex show(HttpServletRequest req, HttpServletResponse resp, @PathVariable("id") int id) {
+//		return svc.show(id);
+//	}
 	
-	@PostMapping("complex")
+	@PostMapping("complexes")
 	public Complex create(HttpServletRequest req, HttpServletResponse res, @RequestBody Complex complex, Principal principal) {
 		return svc.create(complex);
 	}
 	
-	@PutMapping("complex/{id}")
+	@PutMapping("complexes/{id}")
 	public Complex undate(HttpServletRequest req, HttpServletResponse res, @PathVariable int id, @RequestBody Complex complex, Principal principal) {
 		return svc.update(id, complex);
+	}
+	
+	@GetMapping("complexes/{name}")
+	public List<Complex> searchBy(@PathVariable("name") String name) {
+		List<Complex> result = new ArrayList<>();
+		List<Complex> searchBy = svc.complexBySearch(name);
+		result.addAll(searchBy);
+		return result;
 	}
 
 }
