@@ -1,3 +1,4 @@
+import { User } from './user';
 import { Rating } from './rating';
 import { Complaint } from './complaint';
 import { Complex } from './complex';
@@ -5,7 +6,7 @@ import { Complex } from './complex';
 
 export class UserProfile {
   comments: Comment[];
-  complaints: Complaint[];
+  // complaints: Complaint[];
   complex: Complex;
   displayName: string;
   email: string;
@@ -17,12 +18,12 @@ export class UserProfile {
   user: User;
 
 
-  constructor(comments?: Comment[], complaints?: Complaint[], complex?: Complex,
+  constructor(comments?: Comment[],complex?: Complex,
               displayName?: string, email?: string, firstName?: string, id?: number,
               imageUrl?: string, lastName?: string, ratings?: Rating[], user?: User, ) {
     this.id = id;
     this.user = user;
-    this.complaints = complaints;
+    // this.complaints = complaints;
     this.complex = complex;
     this.displayName = displayName;
     this.email = email;

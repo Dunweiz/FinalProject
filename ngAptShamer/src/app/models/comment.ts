@@ -1,3 +1,4 @@
+import { UserProfile } from './user-profile';
 import { Complaint } from './complaint';
 
 export class Comment {

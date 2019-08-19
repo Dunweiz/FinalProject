@@ -1,3 +1,4 @@
+import { UserProfile } from './user-profile';
 import { Complex } from './complex';
 import { Image } from './image';
 

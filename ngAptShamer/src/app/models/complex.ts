@@ -1,3 +1,5 @@
+import { Rating } from './rating';
+import { UserProfile } from './user-profile';
 import { Contact } from './contact';
 import { Complaint } from './complaint';
 
@@ -17,7 +19,7 @@ export class Complex {
 
   constructor(id?: number, name?: string, street?: string, city?: string,
               state?: string, zip?: string, imageUrl?: string, numUnits?: number,
-              contacts?: Contact[], complaints?: Complaint[], profiles?: userProfile,
+              contacts?: Contact[], complaints?: Complaint[], profiles?: UserProfile[],
               ratings?: Rating[]) {
                 this.id = id;
                 this.name = name;
