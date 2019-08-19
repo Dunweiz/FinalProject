@@ -3,10 +3,9 @@ import { LoginComponent } from './components/login/login.component';
 import { LocationsComponent } from './components/locations/locations.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TemplateComponent } from './components/template/template.component';
-
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },

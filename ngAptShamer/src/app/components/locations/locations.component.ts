@@ -15,7 +15,7 @@ export class LocationsComponent implements OnInit {
 
   async ngOnInit() {
     const locat = await this.fetch.location;
-     console.log(locat);
+    console.log(locat);
   }
 
 }
