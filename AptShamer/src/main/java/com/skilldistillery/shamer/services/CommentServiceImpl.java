@@ -1,6 +1,7 @@
 package com.skilldistillery.shamer.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,13 @@ public class CommentServiceImpl implements CommentService{
 	}
 	
 	@Override
-	public Comment show(int id) {
+	public Comment show(int id, int cid) {
+		Optional<Complaint> complaint = cRepo.findById(id);
+		if(complaint != null) {
 		return repo.findById(id).get();
+		}else {
+			return null;
+		}
 	}
 	
 	@Override
@@ -50,12 +56,15 @@ public class CommentServiceImpl implements CommentService{
 	}
 	
 	@Override
-	public Boolean destroy(int id) {
-		Comment comment = repo.findById(id).get();
+	public Boolean destroy(int id, int cid) {
+		Optional<Complaint> complaint = cRepo.findById(id);
 		boolean deleted = false;
+		if(complaint != null) {
+		Comment comment = repo.findById(cid).get();
 		if(comment != null) {
-			repo.deleteById(id);
+			repo.deleteById(cid);
 			deleted = true;
+		}
 		}
 		return deleted;
 	}
