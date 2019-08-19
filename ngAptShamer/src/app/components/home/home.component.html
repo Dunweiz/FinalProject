@@ -1,1 +1,6 @@
 <h1>home</h1>
+
+<form (submit)="search()">
+  City: <input type="text" name="locationSearch" [(ngModel)]="locationSearch" />
+  <button>SUBMIT</button>
+</form>
