@@ -11,10 +11,10 @@ export class FetchCallsService {
   constructor() { }
 
   async searchByApartment(search: string) {
-    // const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=${googleMapsApiKey}`;
-    // const response = await fetch(url);
-    // const location =  await response.json();
-    this.location = 'hello';
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=${googleMapsApiKey}`;
+    const response = await fetch(url);
+    const location =  await response.json();
+    this.location = location;
     return location;
       }
 
