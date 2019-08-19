@@ -19,7 +19,6 @@ const routes: Routes = [
   { path: 'complexes', component: LocationsComponent}
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH
   //{ path: '**', component: NotFoundComponent }
-
 ];
 
 @NgModule({
