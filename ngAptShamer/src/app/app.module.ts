@@ -12,7 +12,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LocationsComponent } from './components/locations/locations.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RegisterComponent } from './component/register/register.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [

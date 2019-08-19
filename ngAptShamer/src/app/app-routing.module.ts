@@ -4,13 +4,15 @@ import { HomeComponent } from './components/home/home.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'complexes', component: LocationsComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent}
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH
   //{ path: '**', component: NotFoundComponent }
 ];
