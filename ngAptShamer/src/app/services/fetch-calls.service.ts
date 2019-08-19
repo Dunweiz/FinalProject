@@ -6,15 +6,17 @@ import { googleMapsApiKey } from '../../assets/apikeys.js';
 })
 export class FetchCallsService {
 
+  location: string;
+
   constructor() { }
 
   async searchByApartment(search: string) {
-    console.log(search);
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=${googleMapsApiKey}`;
     const response = await fetch(url);
-    console.log(response);
-    const location = await response.json();
+    const location =  await response.json();
+    this.location = location;
     return location;
       }
+
 }
 

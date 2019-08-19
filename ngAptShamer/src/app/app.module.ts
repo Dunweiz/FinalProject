@@ -1,3 +1,4 @@
+import { FetchCallsService } from './services/fetch-calls.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { RatingPipe } from './pipes/rating.pipe';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LocationsComponent } from './components/locations/locations.component';
 
 @NgModule({
   declarations: [
@@ -14,14 +16,17 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HomeComponent,
     RatingPipe,
     NavigationComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LocationsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    FetchCallsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
