@@ -48,7 +48,6 @@ public class ComplexServiceImpl implements ComplexService {
 	
 	@Override
 	public List<Complex> complexBySearch(String name) {
-		name = "%" + name + "%";
 		name.split(", ");
 		return repo.findByNameLikeOrCityLikeOrStreetLike(name, name, name);
 	}
