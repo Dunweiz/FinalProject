@@ -9,7 +9,7 @@ export class User {
   profile: UserProfile;
 
   constructor(id?: number, username?: string, password?: string, role?: string,
-              enabled?:boolean, profile?: UserProfile) {
+              enabled?: boolean, profile?: UserProfile) {
     this.id = id;
     this.username = username;
     this.password = password;
