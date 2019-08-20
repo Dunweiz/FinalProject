@@ -23,7 +23,7 @@ export class ComplaintService {
 
   // Methods
 
-  create(complaint: Complaint, id: number) {
+  create(complaint: Complaint) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

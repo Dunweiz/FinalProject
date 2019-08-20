@@ -1,2 +1,20 @@
-<p>complaint-form works!</p>
+<div class="bg-container">
+    <div class="content" id="login" style="padding-top: 200px">
+        <h2>Add A Complaint</h2>
+        <br>
+        <br>
+        <form id="complaintForm">
+
+          <!-- NEED COMPLEX ID -->
+          <!-- NEED USER ID -->
+          <input type="text" name="title" placeholder="Complaint Title" [(ngModel)]="newComp.title">
+          <input type="text" name="description" placeholder="description" [(ngModel)]="newComp.description">
+          <!-- SET "IS RESOLVED" TO FALSE -->
+          <!-- RESOLVED DATE IS NULL -->
+          <!-- RESOLUTION DESCRIPTION IS NULL -->
+        <button type="submit" (click)="create(newComp)">Log A Complaint</button>
+        </form>
+      </div>
+  </div>
+
 

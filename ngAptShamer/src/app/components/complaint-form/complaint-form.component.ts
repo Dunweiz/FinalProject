@@ -25,7 +25,7 @@ export class ComplaintFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  create(id: number) {
+  create(id: number, newComp: Complaint) {
     this.complaintSvc.create(this.newComp, id).subscribe(
       good => {
         this.newComp = new Complaint();
