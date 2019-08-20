@@ -18,6 +18,7 @@ export class LocationsComponent implements OnInit {
     try {
     const locat = await this.fetch.location;
     const data = locat.results[0].formatted_address;
+    console.log(data);
     // const data = JSON.parse(locat);
     const address = data.split(', ');
     // console.log(address);
