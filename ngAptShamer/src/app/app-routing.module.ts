@@ -1,3 +1,5 @@
+import { AptComplaintsComponent } from './apt-complaints/apt-complaints.component';
+import { CardComponent } from './components/card/card.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
 import { LocationsComponent } from './components/locations/locations.component';
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: 'template', component: TemplateComponent },
   { path: 'complexes', component: LocationsComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'card', component: CardComponent},
+  { path: 'complaints', component: AptComplaintsComponent}
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH
   //{ path: '**', component: NotFoundComponent }
 ];
