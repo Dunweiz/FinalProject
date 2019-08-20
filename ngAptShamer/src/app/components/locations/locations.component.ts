@@ -22,6 +22,9 @@ export class LocationsComponent implements OnInit {
     const address = data.split(', ');
     // console.log(address);
     console.log(address);
+    if (address.length === 4) {
+      
+    }
     } catch (Error) {
       console.log(Error, 'locations.component.fetch');
     }
