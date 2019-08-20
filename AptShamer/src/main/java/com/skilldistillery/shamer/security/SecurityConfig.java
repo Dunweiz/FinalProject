@@ -1,7 +1,5 @@
 package com.skilldistillery.shamer.security;
 
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
