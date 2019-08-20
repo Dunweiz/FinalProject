@@ -11,7 +11,7 @@ body, html {
 }
 
 .bg-container .content{
-  position: absolute;
+  position: relative;
   z-index:999;
   text-align: center;
   width: 100%;
@@ -38,7 +38,4 @@ body, html {
   background-size: cover;
 }
 
-#search {
-  padding-top: 90px;
-}
 

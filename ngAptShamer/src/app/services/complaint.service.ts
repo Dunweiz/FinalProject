@@ -15,7 +15,7 @@ export class ComplaintService {
 
   // Fields
 
-  private url = environment.baseUrl + 'api/complexes/';
+  private url = environment.baseUrl + '/api/complexes/';
 
   // Constructor
 
