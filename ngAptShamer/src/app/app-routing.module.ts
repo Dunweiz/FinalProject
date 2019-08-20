@@ -1,6 +1,5 @@
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
-import { LocationsComponent } from './components/locations/locations.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule, Component } from '@angular/core';
@@ -12,7 +11,6 @@ import { ComplexComponent } from './components/complex/complex.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: 'locations', component: LocationsComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent},

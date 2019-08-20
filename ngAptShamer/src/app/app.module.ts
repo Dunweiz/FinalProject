@@ -6,7 +6,6 @@ import { FetchCallsService } from './services/fetch-calls.service';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LocationsComponent } from './components/locations/locations.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -27,7 +26,6 @@ import { ComplaintFormComponent } from './components/complaint-form/complaint-fo
     NavigationComponent,
     TemplateComponent,
     NotFoundComponent,
-    LocationsComponent,
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
