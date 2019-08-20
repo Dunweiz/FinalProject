@@ -23,6 +23,7 @@ public class Complaint {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="complex_id")
 	private Complex complex;

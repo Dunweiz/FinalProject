@@ -38,10 +38,10 @@ public class ComplexController {
 		return svc.index();
 	}
 	
-//	@GetMapping("complexes/{id}")
-//	public Complex show(HttpServletRequest req, HttpServletResponse resp, @PathVariable("id") int id) {
-//		return svc.show(id);
-//	}
+	@GetMapping("complexes/{id}/details")
+	public Complex show(HttpServletRequest req, HttpServletResponse resp, @PathVariable("id") int id) {
+		return svc.show(id);
+	}
 	
 	@PostMapping("complexes")
 	public Complex create(HttpServletRequest req, HttpServletResponse res, @RequestBody Complex complex, Principal principal) {

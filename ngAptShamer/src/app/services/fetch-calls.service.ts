@@ -17,7 +17,6 @@ export class FetchCallsService {
     const response = await fetch(url);
     location =  await response.json();
     this.location = location;
-    // console.log(location);
     return location;
     } catch (Error) {
       console.log(Error, ': fetch-calls.service.ts search by apt');
