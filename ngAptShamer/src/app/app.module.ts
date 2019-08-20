@@ -19,6 +19,7 @@ import { TemplateComponent } from './components/template/template.component';
 import { ComplexComponent } from './components/complex/complex.component';
 import { ComplaintFormComponent } from './components/complaint-form/complaint-form.component';
 import { ComplexDetailComponent } from './components/complex-detail/complex-detail.component';
+import { ComplaintComponent } from './components/complaint/complaint.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ComplexDetailComponent } from './components/complex-detail/complex-deta
     RegisterComponent,
     ComplaintFormComponent,
     ComplexComponent,
-    ComplexDetailComponent
+    ComplexDetailComponent,
+    ComplaintComponent
   ],
   imports: [
     BrowserModule,
