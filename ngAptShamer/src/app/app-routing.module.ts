@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent},
   { path: 'template', component: TemplateComponent },
-  { path: 'complexes', component: LocationsComponent}
+  { path: 'complexes', component: LocationsComponent},
+  { path: 'register', component: RegisterComponent}
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH
   //{ path: '**', component: NotFoundComponent }
 ];
