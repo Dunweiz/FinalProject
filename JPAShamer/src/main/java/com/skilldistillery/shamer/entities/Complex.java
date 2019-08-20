@@ -40,7 +40,6 @@ public class Complex {
 	@OneToMany(mappedBy="complex")
 	private List<Contact> contacts;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy="complex")
 	private List<Complaint> complaints;
 	

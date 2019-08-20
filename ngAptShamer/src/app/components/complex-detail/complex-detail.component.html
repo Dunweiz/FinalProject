@@ -1,0 +1,22 @@
+<p>complex-detail works!</p>
+<ul>
+  <h1>{{complex.name}}</h1>
+  <li>{{complex.city}}</li>
+  <li>{{complex.street}}</li>
+  <li>{{complex.state}}</li>
+  <li>{{complex.zip}}</li>
+  <li>number of units: {{complex.numUnits}}</li>
+  <img src="{{complex.imageUrl}}"/>
+</ul>
+
+  <ul *ngFor="let contact of complex.contacts">
+    <li>{{contact.email}}</li>
+    <li>{{contact.name}}</li>
+    <li>{{contact.phone}}</li>
+  </ul>
+    <ul *ngFor="let complaint of complex.complaints">
+      <li>{{complaint.title}}</li>
+      <li>{{complaint.description}}</li>
+      <li>{{complaint.created}}</li>
+    </ul>
+

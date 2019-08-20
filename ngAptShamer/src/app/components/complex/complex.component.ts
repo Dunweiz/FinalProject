@@ -25,6 +25,7 @@ export class ComplexComponent implements OnInit {
         data2 => {
           this.complex = data2;
           console.log('DATA:', this.complex);
+          this.router.navigateByUrl(`complexes/${data2[0].id}`);
         },
         error => {
           console.log(error);
@@ -47,4 +48,8 @@ export class ComplexComponent implements OnInit {
       console.log(Error, 'locations.component.fetch');
     }
   }
+
+viewComplex(id: number) {
+  this.router.navigateByUrl(`/complexes/${id}`);
+}
 }

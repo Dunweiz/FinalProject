@@ -1,3 +1,4 @@
+import { ComplexDetailComponent } from './components/complex-detail/complex-detail.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -16,9 +17,10 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: 'template', component: TemplateComponent },
   { path: 'complexes', component: ComplexComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'complexes/:id', component: ComplexDetailComponent},
+  { path: 'register', component: RegisterComponent},
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH
-  //{ path: '**', component: NotFoundComponent }
+  { path: 'notfound', component: NotFoundComponent }
 ];
 
 @NgModule({
