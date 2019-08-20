@@ -1,1 +1,1 @@
-export const googleMapsApiKey = 'AIzaSyAjD4HKYyMk9hJ5cf16ewRqberkoVeRAps'
+export const googleMapsApiKey = 'AIzaSyC1QyU_ZlCoLj2GWxT-UrlV00noX0jTxVs'

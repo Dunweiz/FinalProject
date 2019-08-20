@@ -7,16 +7,17 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { TemplateComponent } from './components/template/template.component';
+import { ComplexComponent } from './components/complex/complex.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: 'complexes', component: LocationsComponent},
+  { path: 'locations', component: LocationsComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent},
   { path: 'template', component: TemplateComponent },
-  { path: 'complexes', component: LocationsComponent},
+  { path: 'complexes', component: ComplexComponent},
   { path: 'register', component: RegisterComponent}
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH
   //{ path: '**', component: NotFoundComponent }
