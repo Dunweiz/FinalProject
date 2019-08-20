@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { googleMapsApiKey } from '../../assets/apikey.js';
+import { googleMapsApiKey } from '../../assets/keys.js';
 
 @Injectable({
   providedIn: 'root'
