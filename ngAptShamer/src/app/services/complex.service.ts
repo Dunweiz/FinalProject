@@ -13,7 +13,6 @@ export class ComplexService {
   constructor(private http: HttpClient) { }
 
   searchApartment(apt: string) {
-    console.log('APTT: ', apt);
     return this.http.get<Complex[]>(this.url + apt)
       .pipe(
         catchError((err: any) => {
@@ -26,13 +25,24 @@ export class ComplexService {
   }
 
   searchCity(city: string) {
-    console.log('CITY: ', city);
     return this.http.get<Complex[]>(this.url + city)
       .pipe(
         catchError((err: any) => {
           console.log(err);
           return throwError(
             'Error on ComplexService searchApartment'
+          );
+        })
+      );
+  }
+
+  getComplexById(id: number) {
+    return this.http.get<Complex>(this.url + id + '/details')
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            'Error on ComplexService getComplexById'
           );
         })
       );

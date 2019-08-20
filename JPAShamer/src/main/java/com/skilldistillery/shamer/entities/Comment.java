@@ -34,6 +34,7 @@ public class Comment {
 	@JoinColumn(name="complaint_id")
 	private Complaint complaint;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_profile_id")
 	private UserProfile userProfile;
