@@ -17,32 +17,35 @@ export class ComplexComponent implements OnInit {
   async ngOnInit() {
     try {
     const locat = await this.fetch.location;
-    const data = locat.results[0].formatted_address;
-    const address = data.split(', ');
-    console.log(address);
-    if (address.length === 4) {
-      this.complexSvc.searchApartment(address[0]).subscribe(
-        data2 => {
-          this.complex = data2;
-          console.log('DATA:', this.complex);
-          this.router.navigateByUrl(`complexes/${data2[0].id}`);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    }  else if (address.length === 3) {
-      this.complexSvc.searchCity(address[0]).subscribe(
-        data3 => {
-          console.log(data3);
-          this.complex = data3;
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    }  else {
-      this.router.navigateByUrl('/home');
+    let address;
+    if (locat.results.length) {
+      const data = locat.results[0].formatted_address;
+      address = data.split(', ');
+      console.log(address);
+      if (address.length === 4) {
+        this.complexSvc.searchApartment(address[0]).subscribe(
+          data2 => {
+            this.complex = data2;
+            console.log('DATA:', this.complex);
+            this.router.navigateByUrl(`complexes/${data2[0].id}`);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }  else {
+        this.complexSvc.searchCity(address[0]).subscribe(
+          data3 => {
+            console.log(data3);
+            this.complex = data3;
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+   } else {
+      this.router.navigateByUrl('notfound');
     }
     } catch (Error) {
       console.log(Error, 'locations.component.fetch');
