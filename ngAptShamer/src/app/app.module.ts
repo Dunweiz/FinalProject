@@ -17,6 +17,7 @@ import { RatingPipe } from './pipes/rating.pipe';
 import { RegisterComponent } from './components/register/register.component';
 import { TemplateComponent } from './components/template/template.component';
 import { ComplexComponent } from './components/complex/complex.component';
+import { ComplaintFormComponent } from './components/complaint-form/complaint-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ComplexComponent } from './components/complex/complex.component';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
+    ComplaintFormComponent,
     ComplexComponent
   ],
   imports: [

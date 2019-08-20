@@ -1,11 +1,11 @@
-## Apartment Shamer
+## Apartment Shammer
 
 ### Final Group Project for Skill Distillery
 
 ### Team: Dapper Facade
 * Chana Cohn
 * Dunwei Zheng
-* Ryan Harrrington
+* Ryan Harrington
 * Kayla Hatle
 
 ### Overview
@@ -16,6 +16,7 @@
 ### REST API Endpoints
 | HTTP Verb | Resource URI                        | Action                               |
 |-----------|-------------------------------------|--------------------------------------|
+|                                                                                        |
 |Complex    |                                     |                                      |
 | GET       | /api/complexes/                     | Retrieve All complexes               |
 | POST      | /api/complexes/                     | Add a complex                        |
@@ -26,7 +27,7 @@
 | POST      | /api/complexes/{id}/complaints      | Add a complaint for a complex        |
 | PUT       | /api/complexes/{id}/complaints/{cid}| Update a complaint                   |
 | DELETE    | /api/complexes/{id}/complaints/{id} | Delete one complaint                 |
-|           |                                     |                                      |
+|                                                                                        |
 |Complaints |                                     |                                      |
 | GET       | /api/complaints/{id}/images         | Retrieve all images                  |
 | GET       | /api/complaints/{id}/images{mid}    | Retrieve one image                   |
@@ -36,7 +37,7 @@
 | POST      | /api/complaints/{id}/comments       | Add a complaint                      |
 | PUT       | /api/complaints/{id}/comments/{cid} | Retrieve all comments                |
 | DELETE    | /api/complaints/{id}/comments/{cid} | Delete one comment                   |
-|           |                                     |                                      |
+|                                                                                        |
 |Contacts   |                                     |                                      |
 | GET       | /api/contacts                       | Retrieve all contacts                |
 

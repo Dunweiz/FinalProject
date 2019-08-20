@@ -82,7 +82,7 @@ public class ComplaintController {
 		return iSvc.create(id, image);
 	}
 	
-	@DeleteMapping("/images/{id}")
+	@DeleteMapping("complaints/{id}/images/{id}")
 	public Boolean deleteImage(@PathVariable int id) {
 		return iSvc.destroy(id);
 	}
