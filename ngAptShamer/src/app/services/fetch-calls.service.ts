@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { googleMapsApiKey } from '../../assets/apikeys.js';
+import { googleMapsApiKey } from '../../assets/keys.js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FetchCallsService {
 
-  location: string;
+  location;
 
   constructor() { }
 
