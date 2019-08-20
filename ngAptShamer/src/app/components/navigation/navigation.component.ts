@@ -17,4 +17,8 @@ export class NavigationComponent implements OnInit {
   loggedIn = function() {
     return this.auth.checkLogin();
   };
+
+  logout = function() {
+    return this.auth.logout();
+  }
 }
