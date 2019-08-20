@@ -19,7 +19,11 @@ export class HomeComponent implements OnInit {
 
   async search() {
     const search = await this.fetchSvc.searchByApartment(this.locationSearch);
-    // const location = search.results[0].formatted_address;
+    let location = null;
+    if (search.results.length) {
+      console.log(search);
+      location = search.results[0].formatted_address;
+    }
     console.log(location);
     this.router.navigateByUrl(`/complexes`);
   }

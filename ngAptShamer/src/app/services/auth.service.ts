@@ -22,12 +22,13 @@ export class AuthService {
         'X-Requested-With': 'XMLHttpRequest'
       })
     };
-
+    console.log(environment.baseUrl + 'authenticate');
     // create request to authenticate credentials
     return this.http
-      .get(environment.baseUrl + 'authenticate', httpOptions)
+      .get(environment.baseUrl + '/authenticate', httpOptions)
       .pipe(
         tap((res) => {
+          console.log(res);
           localStorage.setItem('credentials' , credentials);
           return res;
         }),
