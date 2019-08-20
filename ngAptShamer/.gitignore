@@ -45,6 +45,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-./src/assets/keys.js
-../src/assets/keys.js
-keys.js.
+/./src/assets/keys.js
+/../src/assets/keys.js
+/keys.js.
+/keys.js
