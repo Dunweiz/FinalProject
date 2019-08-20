@@ -8,5 +8,5 @@ import com.skilldistillery.shamer.entities.Complex;
 
 public interface ComplexRepository extends JpaRepository<Complex, Integer>{
 
-	List<Complex> findByNameLikeOrCityLikeOrStreetLike(String name, String name2, String name3);
+	List<Complex> findByCityLikeOrStreetLike(String name, String name2);
 }
