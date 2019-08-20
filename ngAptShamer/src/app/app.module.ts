@@ -16,6 +16,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RatingPipe } from './pipes/rating.pipe';
 import { RegisterComponent } from './components/register/register.component';
 import { TemplateComponent } from './components/template/template.component';
+import { ComplexComponent } from './components/complex/complex.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TemplateComponent } from './components/template/template.component';
     LocationsComponent,
     LoginComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    ComplexComponent
   ],
   imports: [
     BrowserModule,
