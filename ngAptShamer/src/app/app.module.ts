@@ -1,3 +1,4 @@
+import { CardComponent } from './components/card/card.component';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { ComplexService } from './services/complex.service';
 import { AppComponent } from './app.component';
@@ -19,6 +20,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { TemplateComponent } from './components/template/template.component';
 import { ComplexComponent } from './components/complex/complex.component';
 import { ComplaintFormComponent } from './components/complaint-form/complaint-form.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AptComplaintsComponent } from './apt-complaints/apt-complaints.component';
 import { ComplexDetailComponent } from './components/complex-detail/complex-detail.component';
 import { ComplaintComponent } from './components/complaint/complaint.component';
 
@@ -35,6 +38,8 @@ import { ComplaintComponent } from './components/complaint/complaint.component';
     RegisterComponent,
     ComplaintFormComponent,
     ComplexComponent,
+    CardComponent,
+    AptComplaintsComponent,
     ComplexDetailComponent,
     ComplaintComponent
   ],
@@ -43,7 +48,9 @@ import { ComplaintComponent } from './components/complaint/complaint.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule,
+
   ],
   providers: [
     FetchCallsService,
