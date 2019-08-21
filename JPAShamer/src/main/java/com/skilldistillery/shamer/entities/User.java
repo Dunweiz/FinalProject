@@ -22,7 +22,7 @@ public class User {
 	
 	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="user_profile_id")
 	private UserProfile profile;
 	
 	public int getId() {

@@ -25,10 +25,6 @@ public class UserProfile {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne
-	@JoinColumn(name="user_id")
-	private User user;
-	
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name="complex_id")
@@ -67,10 +63,9 @@ public class UserProfile {
 		super();
 	}
 
-	public UserProfile(User user, Complex complex, String email, String firstName, String lastName, String displayName,
+	public UserProfile(Complex complex, String email, String firstName, String lastName, String displayName,
 			String imageUrl, List<Comment> comments, List<Complaint> complaints, List<Rating> ratings) {
 		super();
-		this.user = user;
 		this.complex = complex;
 		this.email = email;
 		this.firstName = firstName;
@@ -132,13 +127,6 @@ public class UserProfile {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public Complex getComplex() {
 		return complex;
@@ -214,7 +202,7 @@ public class UserProfile {
 
 	@Override
 	public String toString() {
-		return "UserProfile [id=" + id + ", user=" + user + ", email=" + email + ", firstName=" + firstName
+		return "UserProfile [id=" + id + ", email=" + email + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", displayName=" + displayName + ", imageUrl=" + imageUrl + "]";
 	}
 }

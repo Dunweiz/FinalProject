@@ -15,7 +15,7 @@ export class ComplaintService {
 
   // Fields
 
-  private url = environment.baseUrl + 'api/complexes';
+  private url = environment.baseUrl + '/api/complexes';
 
   // Constructor
 
@@ -23,7 +23,7 @@ export class ComplaintService {
 
   // Methods
 
-  create(complaint: Complaint) {
+  create(complaint: Complaint, id: number) {
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Basic ' + this.authSvc.getCredentials(),

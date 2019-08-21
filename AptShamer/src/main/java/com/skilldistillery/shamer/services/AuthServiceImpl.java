@@ -33,11 +33,9 @@ public class AuthServiceImpl implements AuthService {
 		user.setPassword(encryptedPassword);
 		user.setEnabled(true);
 		user.setRole("user");
-		repo.saveAndFlush(user);
 		UserProfile userP = new UserProfile();
 		Complex complex = cRepo.findById(1).get();
 		userP.setComplex(complex);
-		userP.setUser(user);
 		userSvc.create(userP);
 		user.setProfile(userP);
 		repo.saveAndFlush(user);
