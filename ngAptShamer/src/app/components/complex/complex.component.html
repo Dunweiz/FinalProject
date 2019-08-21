@@ -1,1 +1,14 @@
-<p>complex works!</p>
+<div class="bg-color">
+  <!-- <div class="content" id="login" style="padding-top: 200px"> -->
+    <div class="complex" style="padding-top: 50px" *ngFor="let c of complex">
+    <!-- <ul *ngFor="let c of complex"> -->
+      <h3>{{c.name}}</h3>
+      {{c.street}}, {{c.city}}, {{c.state}}  {{c.zip}}
+      <br>
+      <br>
+      <div>
+        <img width=700 src="{{c.imageUrl}}" (click)="viewComplex(c.id)" />
+     </div>
+    <!-- </ul> -->
+  <!-- </div> -->
+</div>
