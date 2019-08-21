@@ -1,10 +1,19 @@
-<div>
-  <h1>{{complaint.title}}</h1>
-  <p>{{complaint.description}}</p>
-  <ul *ngFor="let pic of complaint.images">
-    <li><img src="{{pic.imageUrl}}" /></li>
-  </ul>
-  <ul *ngFor="let comment of complaint.comments">
-      <li>{{comment}}</li>
-    </ul>
+<div class="bg-color" style="height: 200%">
+  <div class="complaint" style="padding-top: 50px">
+  <div>
+    <h3>{{complaint.title}}</h3>
+    <p>{{complaint.description}}</p>
+    <!-- <div class="image-container"> -->
+      <div class="wrapper">
+        <div *ngFor="let pic of complaint.images">
+          <img class="image" src="{{pic.imageUrl}}" />
+        </div>
+      </div>
+    </div>
+    <br><br>
+       <h4>Comments on this complaint:</h4>
+       <ul *ngFor="let comment of complaint.comments">
+          <li id="comment">{{comment.text}}</li>
+     </ul>
+  </div>
 </div>

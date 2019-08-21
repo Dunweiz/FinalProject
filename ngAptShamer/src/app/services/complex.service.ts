@@ -8,7 +8,7 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ComplexService {
-  url = environment.baseUrl + '/api/complexes';
+  url = environment.baseUrl + 'api/complexes';
 
   constructor(private http: HttpClient) { }
 

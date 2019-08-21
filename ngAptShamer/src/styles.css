@@ -2,6 +2,8 @@
 
 body, html {
   height: 100%;
+  margin:0;
+  padding:0;
 }
 
 .bg-container{
@@ -47,4 +49,15 @@ body, html {
   text-align: center;
   left: 50%;
   overflow-y: scroll;
+}
+
+.button {
+  border-radius: 8px;
+  background-color: cadetblue;
+  color: black;
+}
+
+.button:hover {
+  background-color:darkgreen;
+  color: white;
 }

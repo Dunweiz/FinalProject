@@ -11,6 +11,7 @@ import { ComplaintService } from 'src/app/services/complaint.service';
 export class ComplaintComponent implements OnInit {
 
   complaint: Complaint = new Complaint();
+  text: string;
 
   constructor(private router: Router,
               private complaintSvc: ComplaintService,
