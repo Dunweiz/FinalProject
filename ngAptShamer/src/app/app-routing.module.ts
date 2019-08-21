@@ -1,3 +1,5 @@
+import { AptComplaintsComponent } from './apt-complaints/apt-complaints.component';
+import { CardComponent } from './components/card/card.component';
 import { ComplaintComponent } from './components/complaint/complaint.component';
 import { ComplexDetailComponent } from './components/complex-detail/complex-detail.component';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -18,6 +20,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent},
   { path: 'template', component: TemplateComponent },
+  { path: 'register', component: RegisterComponent},
+  { path: 'card', component: CardComponent},
+  { path: 'complaints', component: AptComplaintsComponent},
   { path: 'complexes', component: ComplexComponent},
   { path: 'complexes/:id', component: ComplexDetailComponent},
   { path: 'complexes/:id/complaints/:cid', component: ComplaintComponent },
