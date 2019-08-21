@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
-import { DatePipe } from '@angular/common';
 import { Complaint } from '../models/complaint';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -19,7 +18,7 @@ export class ComplaintService {
 
   // Constructor
 
-  constructor(private http: HttpClient, private datePipe: DatePipe) { }
+  constructor(private http: HttpClient) { }
 
   // Methods
 
@@ -31,7 +30,7 @@ export class ComplaintService {
     };
 
     return this.http
-      .post<Complaint>(this.url + id + '/complaints', complaint, httpOptions)
+      .post<Complaint>('http://localhost:8091/api/complexes/' + id + '/complaints', complaint, httpOptions)
       .pipe(
         catchError((err: any) => {
           console.log(err);
