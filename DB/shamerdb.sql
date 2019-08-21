@@ -25,6 +25,29 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user` ;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(40) NOT NULL,
+  `password` VARCHAR(400) NOT NULL,
+  `user_profile_id` INT NULL,
+  `role` VARCHAR(20) NULL,
+  `enabled` TINYINT(1) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
+  INDEX `fk_user_user_profile1_idx` (`user_profile_id` ASC),
+  CONSTRAINT `fk_user_user_profile1`
+    FOREIGN KEY (`user_profile_id`)
+    REFERENCES `user_profile` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `user_profile`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `user_profile` ;
@@ -32,6 +55,7 @@ DROP TABLE IF EXISTS `user_profile` ;
 CREATE TABLE IF NOT EXISTS `user_profile` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `complex_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
   `email` VARCHAR(250) NULL,
   `first_name` VARCHAR(30) NULL,
   `last_name` VARCHAR(30) NULL,
@@ -39,9 +63,15 @@ CREATE TABLE IF NOT EXISTS `user_profile` (
   `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_profile_complex1_idx` (`complex_id` ASC),
+  INDEX `fk_user_profile_user_idx` (`user_id` ASC),
   CONSTRAINT `fk_user_profile_complex1`
     FOREIGN KEY (`complex_id`)
     REFERENCES `complex` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_profile_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -147,29 +177,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(40) NOT NULL,
-  `password` VARCHAR(400) NOT NULL,
-  `user_profile_id` INT NOT NULL,
-  `role` VARCHAR(20) NULL,
-  `enabled` TINYINT(1) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
-  INDEX `fk_user_user_profile1_idx` (`user_profile_id` ASC),
-  CONSTRAINT `fk_user_user_profile1`
-    FOREIGN KEY (`user_profile_id`)
-    REFERENCES `user_profile` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `user_complex_rating`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `user_complex_rating` ;
@@ -228,20 +235,39 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `shamedb`;
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (1, 'testuser', 'testuser', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (2, 'Ryan', 'ryan', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (3, 'Dunwei', 'dunwei', NULL, 'admin', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (4, 'Hatle', 'hatle', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (5, 'Chana', 'chana', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (6, 'floridaman', 'florida', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (7, 'lumberjack', 'lumber', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (8, 'michigantransplant', 'trans', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (9, 'stoner', 'stoner', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (10, 'ultramarathon', 'ultra', NULL, 'user', true);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `user_profile`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `shamedb`;
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (1, 1, 'test@email.com', 'test', 'user', 'testuser', 'http://www.google.com');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (2, 2, 'coolpages@gmail.com', 'Cool', 'Pages', 'Randy', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy1deWezmcXMbXewBhXO_3q7O7YgBKUM8O703t3pbA3LK--5ZU');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (3, 3, 'sherlockholmes@hotmail.com', 'Sherlock', 'Holmes', 'Sherlock', 'https://previews.123rf.com/images/antonbrand/antonbrand1106/antonbrand110600069/9701517-cartoon-sherlock-holmes-with-a-magnifying-glass-isolated-on-white.jpg');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (4, 1, 'gonefishin@gmail.com', 'Gone', 'Fishin', 'GoneFishin', 'https://cdn.shopify.com/s/files/1/0065/4917/6438/products/a-woman-fixes-a-chair-for-free-and-fishing-boat-on-the-lake-background_1080x.jpg?v=1540441143');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (5, 2, 'psychfizz@yahoo.com', 'Psych', 'Fizz', 'PsychedelicFizzbuzz', 'https://www.clipartmax.com/png/middle/64-644163_female-woman-cartoon-avatar-%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB-gif.png');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (6, 4, 'floridam@msn.com', 'Florida', 'Man', 'FloridaMan', 'https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded400/1900751/1900751-1559980116263-e0007c13041eb.jpg');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (7, 5, 'lumberjack@gmail.com', 'Lumber', 'Jack', 'LumberJack', 'https://previews.123rf.com/images/kuliperko/kuliperko1803/kuliperko180300009/97202355-cartoon-character-avatar-symbol-lumberjack-holding-an-axe-vector-illustration.jpg');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (8, 8, 'mitransplant@domain.com', 'Michigan', 'Dude', 'MITransplant', 'https://previews.123rf.com/images/yupiramos/yupiramos1709/yupiramos170910632/85494509-thief-dangerous-in-the-house-avatar-character-vector-illustration-design.jpg');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (9, 9, 'therugtiestheroomtogether@gmail.com', 'Stoner', 'Stoner', 'Stoner', 'https://pickaface.net/gallery/avatar/hugobt205271488a31e87.png');
-INSERT INTO `user_profile` (`id`, `complex_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (10, 10, 'iminbettershapethanyou@yahoo.com', 'Ultra', 'Marathon', 'LookAtMyMuscles', 'https://thumbs.dreamstime.com/z/muscle-man-icon-avatar-muscle-man-icon-over-white-background-vector-illustration-136106040.jpg');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (1, 1, 1, 'test@email.com', 'test', 'user', 'testuser', 'http://www.google.com');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (2, 2, 2, 'coolpages@gmail.com', 'Cool', 'Pages', 'Randy', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy1deWezmcXMbXewBhXO_3q7O7YgBKUM8O703t3pbA3LK--5ZU');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (3, 3, 3, 'sherlockholmes@hotmail.com', 'Sherlock', 'Holmes', 'Sherlock', 'https://previews.123rf.com/images/antonbrand/antonbrand1106/antonbrand110600069/9701517-cartoon-sherlock-holmes-with-a-magnifying-glass-isolated-on-white.jpg');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (4, 1, 4, 'gonefishin@gmail.com', 'Gone', 'Fishin', 'GoneFishin', 'https://cdn.shopify.com/s/files/1/0065/4917/6438/products/a-woman-fixes-a-chair-for-free-and-fishing-boat-on-the-lake-background_1080x.jpg?v=1540441143');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (5, 2, 5, 'psychfizz@yahoo.com', 'Psych', 'Fizz', 'PsychedelicFizzbuzz', 'https://www.clipartmax.com/png/middle/64-644163_female-woman-cartoon-avatar-%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB-gif.png');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (6, 4, 6, 'floridam@msn.com', 'Florida', 'Man', 'FloridaMan', 'https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded400/1900751/1900751-1559980116263-e0007c13041eb.jpg');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (7, 5, 7, 'lumberjack@gmail.com', 'Lumber', 'Jack', 'LumberJack', 'https://previews.123rf.com/images/kuliperko/kuliperko1803/kuliperko180300009/97202355-cartoon-character-avatar-symbol-lumberjack-holding-an-axe-vector-illustration.jpg');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (8, 8, 8, 'mitransplant@domain.com', 'Michigan', 'Dude', 'MITransplant', 'https://previews.123rf.com/images/yupiramos/yupiramos1709/yupiramos170910632/85494509-thief-dangerous-in-the-house-avatar-character-vector-illustration-design.jpg');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (9, 9, 9, 'therugtiestheroomtogether@gmail.com', 'Stoner', 'Stoner', 'Stoner', 'https://pickaface.net/gallery/avatar/hugobt205271488a31e87.png');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (10, 10, 10, 'iminbettershapethanyou@yahoo.com', 'Ultra', 'Marathon', 'LookAtMyMuscles', 'https://thumbs.dreamstime.com/z/muscle-man-icon-avatar-muscle-man-icon-over-white-background-vector-illustration-136106040.jpg');
 
 COMMIT;
 
@@ -366,25 +392,6 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `user`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `shamedb`;
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (1, 'testuser', 'testuser', 1, 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (2, 'Ryan', 'ryan', 2, 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (3, 'Dunwei', 'dunwei', 3, 'admin', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (4, 'Hatle', 'hatle', 4, 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (5, 'Chana', 'chana', 5, 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (6, 'floridaman', 'florida', 6, 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (7, 'lumberjack', 'lumber', 7, 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (8, 'michigantransplant', 'trans', 8, 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (9, 'stoner', 'stoner', 9, 'user', true);
-INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (10, 'ultramarathon', 'ultra', 10, 'user', true);
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `user_complex_rating`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -395,6 +402,21 @@ INSERT INTO `user_complex_rating` (`id`, `user_profile_id`, `complex_id`, `comme
 INSERT INTO `user_complex_rating` (`id`, `user_profile_id`, `complex_id`, `comment`, `last_update`, `rating`) VALUES (4, 3, 3, 'This place smells like weed all the time', '2019/04/20', 5);
 INSERT INTO `user_complex_rating` (`id`, `user_profile_id`, `complex_id`, `comment`, `last_update`, `rating`) VALUES (5, 4, 4, 'My neighbors blast music, and it\'s not even good music. Management never responds to complaints', '2019/05/16', 2);
 INSERT INTO `user_complex_rating` (`id`, `user_profile_id`, `complex_id`, `comment`, `last_update`, `rating`) VALUES (6, 5, 5, 'Maintenance trucks always block the driveway', '2019/06/25', 4);
+
+COMMIT;
+
+START TRANSACTION;
+USE `shamedb`;
+UPDATE user SET user_profile_id = 1 WHERE id = 1;
+UPDATE user SET user_profile_id = 2 WHERE id = 2;
+UPDATE user SET user_profile_id = 3 WHERE id = 3;
+UPDATE user SET user_profile_id = 4 WHERE id = 4;
+UPDATE user SET user_profile_id = 5 WHERE id = 5;
+UPDATE user SET user_profile_id = 6 WHERE id = 6;
+UPDATE user SET user_profile_id = 7 WHERE id = 7;
+UPDATE user SET user_profile_id = 8 WHERE id = 8;
+UPDATE user SET user_profile_id = 9 WHERE id = 9;
+UPDATE user SET user_profile_id = 10 WHERE id = 10;
 
 COMMIT;
 
