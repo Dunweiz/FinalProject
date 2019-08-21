@@ -31,19 +31,22 @@ export class ComplaintService {
         'Content-Type': 'application/json'
       })
     };
+    console.error(complaint.description);
+    console.log(httpOptions);
+
+
 
     return this.http
-      .post<Complaint>(this.url + id + '/complaints', complaint, httpOptions)
+      .post<Complaint>(this.url + '/' + id + '/complaints', complaint, httpOptions)
       .pipe(
         catchError((err: any) => {
           console.log(err);
-          return throwError('ComplaintService.index(): error retrieving complaint list');
+          return throwError('ComplaintService.create(): error creating complaint');
         })
       );
   }
 
   getComplaintById(complexId: number, complaintId: number) {
-    console.log(this.url);
     return this.http.get<Complaint>(this.url + '/' + complexId + '/complaints/' + complaintId)
       .pipe(
         catchError((err: any) => {
