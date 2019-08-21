@@ -54,6 +54,8 @@ public class ComplaintController {
 	
 	@PostMapping("complexes/{id}/complaints")
 	public Complaint createComplaint(@PathVariable int id, @RequestBody Complaint complaint, Principal principal) {
+		System.out.println(complaint.getDescription());
+		System.out.println("id: " + id);
 		return cSvc.create(id, complaint, principal);
 	}
 	

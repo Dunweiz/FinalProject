@@ -30,6 +30,11 @@ public class UserProfile {
 	@JoinColumn(name="complex_id")
 	private Complex complex;
 	
+	@JsonIgnore
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
 	@Column(name="email")
 	private String email;
 	
@@ -117,6 +122,16 @@ public class UserProfile {
 		if (ratings != null && ratings.contains(rating)) {
 			ratings.remove(rating);
 		}
+	}
+
+	
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public int getId() {
