@@ -1,25 +1,24 @@
-<p>complex-detail works!</p>
-<ul>
-  <h1>{{complex.name}}</h1>
-  <li>{{complex.city}}</li>
-  <li>{{complex.street}}</li>
-  <li>{{complex.state}}</li>
-  <li>{{complex.zip}}</li>
-  <li>number of units: {{complex.numUnits}}</li>
-  <img src="{{complex.imageUrl}}"/>
-</ul>
+<div class="bg-color">
+  <div class="complex" style="padding-top: 50px">
+    <h3>{{complex.name}}</h3>
+    {{complex.street}}, {{complex.city}}, {{complex.state}}, {{complex.zip}}<br>
+    Number of units: {{complex.numUnits}}<br><br>
 
-  <ul *ngFor="let contact of complex.contacts">
-    <li>{{contact.email}}</li>
-    <li>{{contact.name}}</li>
-    <li>{{contact.phone}}</li>
-  </ul>
-    <ul *ngFor="let complaint of complex.complaints">
-      <li (click)="viewComplaint(complaint.id)">{{complaint.title}}</li>
-      <li>{{complaint.description}}</li>
-      <li>{{complaint.created}}</li>
-    </ul>
+    <div class="contact" *ngFor="let contact of complex.contacts">
+      {{contact.name}}: {{contact.phone}}; {{contact.email}}<br>
+    </div>
+    <br>
+    <img width=700 src="{{complex.imageUrl}}"/><br><br>
+    <h6>(Log in and scroll down to add a complaint)</h6>
+    <br>
+    <div class="complaint" *ngFor="let complaint of complex.complaints">
+      <a id="clickme" style="color: blue; text-decoration: underline;" (click)="viewComplaint(complaint.id)">{{complaint.title}}</a><br>
+      Problem description: {{complaint.description}}<br>
+      Date reported: {{complaint.created | date :'shortDate'}}<br>
+      <br>
+    </div>
 
 <!-- Create New Complaint Button -->
-
-<button (click)="createNew()"> Create New Complaint </button>
+    <button (click)="createNew()" *ngIf="loggedIn() === true"> Create New Complaint </button>
+  </div>
+</div>

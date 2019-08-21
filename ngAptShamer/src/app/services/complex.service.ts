@@ -37,6 +37,8 @@ export class ComplexService {
   }
 
   getComplexById(id: number) {
+    console.log(this.url);
+    console.log(id);
     return this.http.get<Complex>(this.url + '/' + id + '/details')
       .pipe(
         catchError((err: any) => {

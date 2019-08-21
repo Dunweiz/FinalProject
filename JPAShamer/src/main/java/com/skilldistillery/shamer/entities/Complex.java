@@ -36,7 +36,7 @@ public class Complex {
 	@Column(name="num_units")
 	private int	numUnits;
 	
-	@JsonIgnore
+
 	@OneToMany(mappedBy="complex")
 	private List<Contact> contacts;
 	
