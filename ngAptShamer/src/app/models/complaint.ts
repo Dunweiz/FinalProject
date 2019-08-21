@@ -11,12 +11,13 @@ export class Complaint {
   title: string;
   description: string;
   resolution: string;
+  isResolved: boolean;
   images: Image[];
   comments: Comment[];
 
   constructor(id?: number, complex?: Complex, userProfile?: UserProfile,
               created?: Date, resolved?: Date, title?: string, description?: string,
-              resolution?: string, images?: Image[], comments?: Comment[]) {
+              resolution?: string, isResolved?: boolean, images?: Image[], comments?: Comment[]) {
                 this.id = id;
                 this.complex = complex;
                 this.userProfile = userProfile;
@@ -27,5 +28,6 @@ export class Complaint {
                 this.resolution = resolution;
                 this.images = images;
                 this.comments = comments;
+                this.isResolved = isResolved;
               }
 }

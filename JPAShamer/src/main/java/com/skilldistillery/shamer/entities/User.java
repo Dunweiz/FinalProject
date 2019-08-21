@@ -20,9 +20,9 @@ public class User {
 	private String role;
 	private Boolean enabled;
 	
-	@JsonIgnore
+	
 	@OneToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="user_profile_id")
 	private UserProfile profile;
 	
 	public int getId() {

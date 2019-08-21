@@ -23,8 +23,8 @@ export class ComplaintComponent implements OnInit {
   displayComplaint() {
     const urlId = this.route.snapshot.paramMap.get('id');
     const urlArr = this.router.url.split('/');
-    const complexId = parseInt(urlArr[2]);
-    const complaintId = parseInt(urlArr[4]);
+    const complexId = parseInt(urlArr[2], 10);
+    const complaintId = parseInt(urlArr[4], 10);
     if (urlId) {
       this.complaintSvc.getComplaintById(complexId, complaintId).subscribe(
         good => {

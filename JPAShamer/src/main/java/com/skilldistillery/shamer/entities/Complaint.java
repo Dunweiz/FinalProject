@@ -45,6 +45,9 @@ public class Complaint {
 	
 	private String description;
 	
+	@Column(name="is_resolved")
+	private boolean isResolved;
+	
 	@Column(name="resolution_description")
 	private String resolution;
 	
@@ -81,6 +84,16 @@ public class Complaint {
 		}
 	}
 	
+	
+	
+	public boolean isResolved() {
+		return isResolved;
+	}
+
+	public void setIsResolved(boolean isResolved) {
+		this.isResolved = isResolved;
+	}
+
 	public int getId() {
 		return id;
 	}

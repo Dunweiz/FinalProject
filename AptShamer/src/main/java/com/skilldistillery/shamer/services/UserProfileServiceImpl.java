@@ -41,7 +41,6 @@ public class UserProfileServiceImpl implements UserProfileService {
 		UserProfile managedUser = null;
 		if (opt.isPresent()) {
 			managedUser = opt.get();
-			managedUser.setUser(user.getUser());
 			managedUser.setComplex(user.getComplex());
 			managedUser.setEmail(user.getEmail());
 			managedUser.setFirstName(user.getFirstName());
