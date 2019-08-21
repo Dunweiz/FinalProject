@@ -1,4 +1,5 @@
 import { CardComponent } from './components/card/card.component';
+import { ComplaintService } from 'src/app/services/complaint.service';
 import { ComplexService } from './services/complex.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { ComplaintFormComponent } from './components/complaint-form/complaint-fo
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AptComplaintsComponent } from './apt-complaints/apt-complaints.component';
 import { ComplexDetailComponent } from './components/complex-detail/complex-detail.component';
+import { ComplaintComponent } from './components/complaint/complaint.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { ComplexDetailComponent } from './components/complex-detail/complex-deta
     ComplexComponent,
     CardComponent,
     AptComplaintsComponent,
-    ComplexDetailComponent
+    ComplexDetailComponent,
+    ComplaintComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { ComplexDetailComponent } from './components/complex-detail/complex-deta
   providers: [
     FetchCallsService,
     AuthService,
-    ComplexService
+    ComplexService,
+    ComplaintService
   ],
   bootstrap: [AppComponent]
 })

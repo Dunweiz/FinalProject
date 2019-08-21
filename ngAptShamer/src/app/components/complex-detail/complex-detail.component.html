@@ -15,8 +15,11 @@
     <li>{{contact.phone}}</li>
   </ul>
     <ul *ngFor="let complaint of complex.complaints">
-      <li>{{complaint.title}}</li>
+      <li (click)="viewComplaint(complaint.id)">{{complaint.title}}</li>
       <li>{{complaint.description}}</li>
       <li>{{complaint.created}}</li>
     </ul>
 
+<!-- Create New Complaint Button -->
+
+<button (click)="createNew()"> Create New Complaint </button>
