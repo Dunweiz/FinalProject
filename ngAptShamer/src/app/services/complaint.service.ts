@@ -1,5 +1,6 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Complaint } from '../models/complaint';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -14,23 +15,26 @@ export class ComplaintService {
 
   // Fields
 
-  private url = environment.baseUrl + '/api/complexes/';
+  private url = environment.baseUrl + 'api/complexes';
 
   // Constructor
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authSvc: AuthService) { }
 
   // Methods
 
   create(complaint: Complaint, id: number) {
     const httpOptions = {
       headers: new HttpHeaders({
+        Authorization: 'Basic ' + this.authSvc.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json'
       })
     };
 
     return this.http
-      .post<Complaint>('http://localhost:8091/api/complexes/' + id + '/complaints', complaint, httpOptions)
+      // .post<Complaint>('http://localhost:8091/api/complexes/' + id + '/complaints', complaint, httpOptions)
+      .post<Complaint>(this.url + '/' + id + '/complaints', complaint, httpOptions)
       .pipe(
         catchError((err: any) => {
           console.log(err);

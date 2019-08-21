@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: '/AptShamer'
+  baseUrl: '/AptShamer/'
 };

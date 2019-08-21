@@ -41,7 +41,7 @@ public class ComplaintController {
 //	}
 	
 	//Complaints
-	@GetMapping("/complexes/{id}/complaints")
+	@GetMapping("complexes/{id}/complaints")
 	public List<Complaint> complaintsOfComplex(@PathVariable int id) {
 		return cSvc.index(id);
 	}
@@ -51,12 +51,12 @@ public class ComplaintController {
 		return cSvc.show(id, cid);
 	}
 	
-	@PostMapping("/complexes/{id}/complaints")
+	@PostMapping("complexes/{id}/complaints")
 	public Complaint createComplaint(@PathVariable int id, @RequestBody Complaint complaint) {
 		return cSvc.create(id, complaint);
 	}
 	
-	@PutMapping("/complexes/{id}/complaints/{cid}")
+	@PutMapping("complexes/{id}/complaints/{cid}")
 	public Complaint updateComplaint(@PathVariable int id, @PathVariable int cid, @RequestBody Complaint complaint) {
 		return cSvc.update(id, cid, complaint);
 	}
@@ -67,7 +67,7 @@ public class ComplaintController {
 	}
 	
 	//Images
-	@GetMapping("/complaints/{id}/images")
+	@GetMapping("complaints/{id}/images")
 	public List<Image> imagesOfComplaints(@PathVariable int id) {
 		return iSvc.index(id);
 	}
@@ -77,7 +77,7 @@ public class ComplaintController {
 //		return iSvc.show(mid);
 //	}
 	
-	@PostMapping("/complaints/{id}/images")
+	@PostMapping("complaints/{id}/images")
 	public Image createImage(@PathVariable int id, @RequestBody Image image) {
 		return iSvc.create(id, image);
 	}
@@ -88,26 +88,26 @@ public class ComplaintController {
 	}
 	
 	//Comments
-	@GetMapping("/complaints/{id}/comments")
+	@GetMapping("complaints/{id}/comments")
 	public List<Comment> getCommentsFromComplaints(@PathVariable int id) {
 		return comSvc.index(id);
 	}
 	
-	@GetMapping("/complaints/{id}/comments/{cid}")
+	@GetMapping("complaints/{id}/comments/{cid}")
 	public Comment getImageByComment(@PathVariable int id, @PathVariable int cid) {
 		return comSvc.show(id, cid);
 	}
 	
-	@PostMapping("/complaints/{id}/comments")
+	@PostMapping("complaints/{id}/comments")
 	public Comment createImage(@PathVariable int id, @RequestBody Comment comment) {
 		return comSvc.create(id, comment);
 	}
 	
-	@PutMapping("/complaints/{id}/comments/{cid}") 
+	@PutMapping("complaints/{id}/comments/{cid}") 
 	public Comment updateCommment(@PathVariable int id, @PathVariable int cid, @RequestBody Comment comment) {
 			return comSvc.update(id, cid, comment);
 		}
-	@DeleteMapping("/complaints/{id}/comments/{cid}")
+	@DeleteMapping("complaints/{id}/comments/{cid}")
 	public Boolean destroyComment(@PathVariable int id, @PathVariable int cid) {
 		return comSvc.destroy(id, cid);
 	}
