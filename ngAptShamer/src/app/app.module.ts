@@ -1,3 +1,4 @@
+import { ComplaintService } from 'src/app/services/complaint.service';
 import { ComplexService } from './services/complex.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -47,7 +48,8 @@ import { ComplaintComponent } from './components/complaint/complaint.component';
   providers: [
     FetchCallsService,
     AuthService,
-    ComplexService
+    ComplexService,
+    ComplaintService
   ],
   bootstrap: [AppComponent]
 })

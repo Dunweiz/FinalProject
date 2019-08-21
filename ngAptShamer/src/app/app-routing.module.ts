@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'template', component: TemplateComponent },
   { path: 'complexes', component: ComplexComponent},
   { path: 'complexes/:id', component: ComplexDetailComponent},
-  { path: 'complexes/:id/complaints/:id', component: ComplaintComponent },
+  { path: 'complexes/:id/complaints/:cid', component: ComplaintComponent },
   { path: 'register', component: RegisterComponent},
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH
   { path: 'notfound', component: NotFoundComponent }
