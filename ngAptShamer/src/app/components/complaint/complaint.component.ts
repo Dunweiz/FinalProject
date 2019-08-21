@@ -39,4 +39,21 @@ export class ComplaintComponent implements OnInit {
       }
   }
 
+  delete(cid: number) {
+    const urlId = this.route.snapshot.paramMap.get('cid');
+    const id = this.route.snapshot.paramMap.get('id');
+    if (urlId) {
+      this.complaintSvc.destroy(cid).subscribe (
+        good => {
+          console.log(good);
+          this.router.navigateByUrl(`complexes/${parseInt(id, 10)}`);
+        },
+        bad => {
+          console.log(bad);
+          this.router.navigateByUrl('notfound');
+        }
+      );
+      }
+  }
+
 }

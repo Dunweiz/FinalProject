@@ -23,10 +23,10 @@ public class ComplaintServiceImpl implements ComplaintService {
 
 	@Autowired
 	private ComplexRepository cRepo;
-	
+
 	@Autowired
 	private UserRepository uRepo;
-	
+
 	@Autowired
 	private UserProfileRepository userRepo;
 
@@ -45,7 +45,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 
 	public Complaint create(int id, Complaint complaint, Principal principal) {
 		User user = uRepo.findByUsername(principal.getName());
-		if(user != null) {
+		if (user != null) {
 			complaint.setUserProfile(user.getProfile());
 			complaint.setComplex(cRepo.findById(id).get());
 			complaint.setIsResolved(false);
@@ -69,13 +69,13 @@ public class ComplaintServiceImpl implements ComplaintService {
 		return newComplaint;
 	}
 
-	public Boolean destroy(int id, int cid) {
-		Optional<Complex> complex = cRepo.findById(id);
+	public Boolean destroy(int id, Principal principal) {
+		Complaint complaint = repo.findById(id).get();
+		User user = uRepo.findByUsername(principal.getName());
 		boolean deleted = false;
-		if (complex != null) {
-			Complaint complaint = repo.findById(cid).get();
+		if (user.getProfile().getId() == complaint.getUserProfile().getId()) {
 			if (complaint != null) {
-				repo.deleteById(cid);
+				repo.deleteById(id);
 				deleted = true;
 			}
 		}

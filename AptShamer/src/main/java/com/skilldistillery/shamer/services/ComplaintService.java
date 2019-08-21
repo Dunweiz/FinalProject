@@ -15,5 +15,5 @@ public interface ComplaintService {
 	
 	public Complaint update(int id, int cid, Complaint complaint);
 	
-	public Boolean destroy(int id, int cid);
+	public Boolean destroy(int id, Principal principal);
 }

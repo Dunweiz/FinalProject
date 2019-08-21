@@ -64,9 +64,9 @@ public class ComplaintController {
 		return cSvc.update(id, cid, complaint);
 	}
 	
-	@DeleteMapping("complexes/{id}/complaints/{cid}")
-	public Boolean destroyComplaint(@PathVariable int id, @PathVariable int cid) {
-		return cSvc.destroy(id, cid);
+	@DeleteMapping("complaints/{id}")
+	public Boolean destroyComplaint(@PathVariable int id, Principal principal) {
+		return cSvc.destroy(id, principal);
 	}
 	
 	//Images

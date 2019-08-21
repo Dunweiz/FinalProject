@@ -7,4 +7,5 @@
   <ul *ngFor="let comment of complaint.comments">
       <li>{{comment}}</li>
     </ul>
+    <button (click)="delete(complaint.id)"> Delete </button>
 </div>
