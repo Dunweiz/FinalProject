@@ -1,0 +1,10 @@
+<div>
+  <h1>{{complaint.title}}</h1>
+  <p>{{complaint.description}}</p>
+  <ul *ngFor="let pic of complaint.images">
+    <li><img src="{{pic.imageUrl}}" /></li>
+  </ul>
+  <ul *ngFor="let comment of complaint.comments">
+      <li>{{comment}}</li>
+    </ul>
+</div>

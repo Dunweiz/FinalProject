@@ -34,6 +34,14 @@ complex: Complex = new Complex();
           this.router.navigateByUrl('notfound');
         }
       );
-      }
+    }
+  }
+
+  viewComplaint(id: number) {
+    this.router.navigateByUrl(`/complexes/${this.complex.id}/complaints/${id}`);
+  }
+
+  createNew() {
+    this.router.navigateByUrl(`complexes/${this.complex.id}/complaints`);
   }
 }
