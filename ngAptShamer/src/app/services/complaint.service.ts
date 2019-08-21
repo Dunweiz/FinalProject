@@ -33,7 +33,7 @@ export class ComplaintService {
     };
 
     return this.http
-      .post<Complaint>(this.url + id + '/complaints', complaint, httpOptions)
+      .post<Complaint>(this.url + '/' + id + '/complaints', complaint, httpOptions)
       .pipe(
         catchError((err: any) => {
           console.log(err);

@@ -1,5 +1,6 @@
 package com.skilldistillery.shamer.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,8 @@ public class ComplaintController {
 	}
 	
 	@PostMapping("complexes/{id}/complaints")
-	public Complaint createComplaint(@PathVariable int id, @RequestBody Complaint complaint) {
-		return cSvc.create(id, complaint);
+	public Complaint createComplaint(@PathVariable int id, @RequestBody Complaint complaint, Principal principal) {
+		return cSvc.create(id, complaint, principal);
 	}
 	
 	@PutMapping("complexes/{id}/complaints/{cid}")
