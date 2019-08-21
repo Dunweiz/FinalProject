@@ -57,4 +57,44 @@ export class ComplaintService {
         })
       );
   }
+
+  destroy(cid: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic ' + this.authSvc.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http
+    .delete<boolean>(environment.baseUrl + '/api/complaints/' + cid, httpOptions)
+    .pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          'Error on ComplexService Destroy'
+        );
+      })
+    );
+  }
+
+  update(id: number, complaint: Complaint) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic ' + this.authSvc.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http
+    .put<Complaint>(environment.baseUrl + '/api/complaints/' + id, complaint, httpOptions)
+    .pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          'Error on ComplexService Update'
+        );
+      })
+    );
+  }
 }
