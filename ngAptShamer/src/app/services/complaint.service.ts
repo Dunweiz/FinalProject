@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Complaint } from '../models/complaint';
@@ -14,17 +15,19 @@ export class ComplaintService {
 
   // Fields
 
-  private url = environment.baseUrl + '/api/complexes/';
+  private url = environment.baseUrl + 'api/complexes';
 
   // Constructor
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authSvc: AuthService) { }
 
   // Methods
 
   create(complaint: Complaint, id: number) {
     const httpOptions = {
       headers: new HttpHeaders({
+        Authorization: 'Basic ' + this.authSvc.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json'
       })
     };
@@ -39,9 +42,6 @@ export class ComplaintService {
       );
   }
 
-  // ************************************************************************************
-  // *********************  DO NOT LEAVE AS IS!!!! FIX THIS HARDCODED URL   *************
-  // ************************************************************************************
   getComplaintById(complexId: number, complaintId: number) {
     return this.http.get<Complaint>(this.url + complexId + '/complaints/' + complaintId)
       .pipe(

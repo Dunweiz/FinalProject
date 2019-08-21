@@ -25,7 +25,7 @@ export class AuthService {
     console.log(environment.baseUrl + 'authenticate');
     // create request to authenticate credentials
     return this.http
-      .get(environment.baseUrl + '/authenticate', httpOptions)
+      .get(environment.baseUrl + 'authenticate', httpOptions)
       .pipe(
         tap((res) => {
           console.log(res);
@@ -41,7 +41,7 @@ export class AuthService {
 
   register(user) {
     // create request to register a new account
-    return this.http.post(environment.baseUrl + '/register', user)
+    return this.http.post(environment.baseUrl + 'register', user)
     .pipe(
       catchError((err: any) => {
         console.log(err);
