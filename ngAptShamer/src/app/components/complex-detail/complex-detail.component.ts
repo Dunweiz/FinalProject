@@ -36,4 +36,8 @@ complex: Complex = new Complex();
       );
       }
   }
+
+  createNew() {
+    this.router.navigateByUrl(`complexes/${this.complex.id}/complaints`);
+  }
 }

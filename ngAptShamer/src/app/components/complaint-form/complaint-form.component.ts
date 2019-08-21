@@ -1,6 +1,9 @@
+import { ComplexService } from 'src/app/services/complex.service';
 import { ComplaintService } from './../../services/complaint.service';
 import { Component, OnInit } from '@angular/core';
 import { Complaint } from 'src/app/models/complaint';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-complaint-form',
@@ -16,25 +19,32 @@ export class ComplaintFormComponent implements OnInit {
   // Constructor
 
   constructor(
-    private complaintSvc: ComplaintService
+              private router: Router,
+              private complaintSvc: ComplaintService,
+              private route: ActivatedRoute,
+              private complexSvc: ComplexService
   ) { }
 
 
   // Methods
 
   ngOnInit() {
+    console.log('Hello in oninit');
+
   }
 
-  create(id: number) {
-    this.complaintSvc.create(this.newComp, id).subscribe(
-      good => {
-        this.newComp = new Complaint();
-      },
-      bad => {
-        console.error(bad);
-      }
-    );
+  create() {
+    const urlId = this.route.snapshot.paramMap.get('id');
+    if (urlId) {
+      this.complaintSvc.create(this.newComp, (parseInt(urlId, 10))).subscribe (
+        good => {
+          this.newComp = new Complaint();
+        },
+        bad => {
+          console.error(bad);
+        }
+      );
+    }
   }
-
 
 }

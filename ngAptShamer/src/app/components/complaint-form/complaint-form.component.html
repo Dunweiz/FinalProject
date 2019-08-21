@@ -1,2 +1,9 @@
-<p>complaint-form works!</p>
+
+<!-- Create -->
+
+<form>
+    <input type="text" name="tasks" [(ngModel)]="newComp.title">
+    <input type="text" name="description" [(ngModel)]="newComp.description">
+    <input type="submit" value="Add New Complaint" (click)="create()">
+</form>
 
