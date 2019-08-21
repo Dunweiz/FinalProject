@@ -39,6 +39,7 @@ export class ComplaintFormComponent implements OnInit {
       this.complaintSvc.create(this.newComp, (parseInt(urlId, 10))).subscribe (
         good => {
           this.newComp = new Complaint();
+          this.router.navigateByUrl(`complexes/${(parseInt(urlId, 10))}`);
         },
         bad => {
           console.error(bad);

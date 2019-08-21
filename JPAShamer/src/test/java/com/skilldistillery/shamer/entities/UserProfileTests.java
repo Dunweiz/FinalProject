@@ -44,7 +44,6 @@ class UserProfileTests {
 	void test_userprofile_mappings() {
 		assertNotNull(profile);
 		assertEquals("test@email.com", profile.getEmail());
-		assertEquals("testuser", profile.getUser().getUsername());
 		assertEquals("SomeApartment", profile.getComplex().getName());
 		assertEquals("what a great place", profile.getRatings().get(0).getComment());
 		assertEquals("Poop in the Elevator", profile.getComplaints().get(0).getTitle());

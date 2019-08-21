@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient } from 'selenium-webdriver/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,7 +16,8 @@ complex: Complex = new Complex();
 
   constructor(private router: Router,
               private complexSvc: ComplexService,
-              private route: ActivatedRoute ) { }
+              private route: ActivatedRoute,
+              private auth: AuthService ) { }
 
   ngOnInit() {
     this.displayComplex();
@@ -44,4 +46,9 @@ complex: Complex = new Complex();
   createNew() {
     this.router.navigateByUrl(`complexes/${this.complex.id}/complaints`);
   }
+
+  loggedIn = function() {
+    return this.auth.checkLogin();
+  }
+
 }

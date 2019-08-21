@@ -1,5 +1,6 @@
 package com.skilldistillery.shamer.services;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,8 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.shamer.entities.Complaint;
 import com.skilldistillery.shamer.entities.Complex;
+import com.skilldistillery.shamer.entities.User;
 import com.skilldistillery.shamer.respositories.ComplaintRepository;
 import com.skilldistillery.shamer.respositories.ComplexRepository;
+import com.skilldistillery.shamer.respositories.UserProfileRepository;
+import com.skilldistillery.shamer.respositories.UserRepository;
 
 @Service
 public class ComplaintServiceImpl implements ComplaintService {
@@ -19,6 +23,12 @@ public class ComplaintServiceImpl implements ComplaintService {
 
 	@Autowired
 	private ComplexRepository cRepo;
+
+	@Autowired
+	private UserRepository uRepo;
+
+	@Autowired
+	private UserProfileRepository userRepo;
 
 	public List<Complaint> index(int id) {
 		return repo.findByComplex_Id(id);
@@ -33,33 +43,42 @@ public class ComplaintServiceImpl implements ComplaintService {
 		}
 	}
 
-	public Complaint create(int id, Complaint complaint) {
-		complaint.setComplex(cRepo.findById(id).get());
-		return repo.saveAndFlush(complaint);
+	public Complaint create(int id, Complaint complaint, Principal principal) {
+		User user = uRepo.findByUsername(principal.getName());
+		if (user != null) {
+			complaint.setUserProfile(user.getProfile());
+			complaint.setComplex(cRepo.findById(id).get());
+			complaint.setIsResolved(false);
+			return repo.saveAndFlush(complaint);
+		}
+		return complaint;
 	}
 
-	public Complaint update(int id, int cid, Complaint complaint) {
-		complaint.setComplex(cRepo.findById(id).get());
+	public Complaint update(int cid, Complaint complaint, Principal principal) {
+		User user = uRepo.findByUsername(principal.getName());
 		Complaint newComplaint = repo.findById(cid).get();
-		if (newComplaint != null) {
-			newComplaint.setComplex(complaint.getComplex());
-			newComplaint.setCreated(complaint.getCreated());
-			newComplaint.setDescription(complaint.getDescription());
-			newComplaint.setResolution(complaint.getResolution());
-			newComplaint.setResolved(complaint.getResolved());
-			newComplaint.setTitle(complaint.getTitle());
-			repo.saveAndFlush(newComplaint);
+		if (user.getProfile().getId() == newComplaint.getUserProfile().getId()) {
+			if (newComplaint != null) {
+				//newComplaint.setComplex(complaint.getComplex());
+				newComplaint.setCreated(complaint.getCreated());
+				newComplaint.setDescription(complaint.getDescription());
+				newComplaint.setResolution(complaint.getResolution());
+				newComplaint.setResolved(complaint.getResolved());
+				newComplaint.setIsResolved(complaint.isResolved());
+				newComplaint.setTitle(complaint.getTitle());
+				repo.saveAndFlush(newComplaint);
+			}
 		}
 		return newComplaint;
 	}
 
-	public Boolean destroy(int id, int cid) {
-		Optional<Complex> complex = cRepo.findById(id);
+	public Boolean destroy(int id, Principal principal) {
+		Complaint complaint = repo.findById(id).get();
+		User user = uRepo.findByUsername(principal.getName());
 		boolean deleted = false;
-		if (complex != null) {
-			Complaint complaint = repo.findById(cid).get();
+		if (user.getProfile().getId() == complaint.getUserProfile().getId()) {
 			if (complaint != null) {
-				repo.deleteById(cid);
+				repo.deleteById(id);
 				deleted = true;
 			}
 		}

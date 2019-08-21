@@ -8,7 +8,7 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ComplexService {
-  url = environment.baseUrl + '/api/complexes';
+  url = environment.baseUrl + 'api/complexes';
 
   constructor(private http: HttpClient) { }
 
@@ -31,13 +31,15 @@ export class ComplexService {
         catchError((err: any) => {
           console.log(err);
           return throwError(
-            'Error on ComplexService searchApartment'
+            'Error on ComplexService searchCity'
           );
         })
       );
   }
 
   getComplexById(id: number) {
+    console.log(this.url);
+    console.log(id);
     return this.http.get<Complex>(this.url + '/' + id + '/details')
       .pipe(
         catchError((err: any) => {

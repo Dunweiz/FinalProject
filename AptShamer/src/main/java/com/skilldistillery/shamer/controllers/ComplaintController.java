@@ -1,5 +1,6 @@
 package com.skilldistillery.shamer.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,18 +53,20 @@ public class ComplaintController {
 	}
 	
 	@PostMapping("complexes/{id}/complaints")
-	public Complaint createComplaint(@PathVariable int id, @RequestBody Complaint complaint) {
-		return cSvc.create(id, complaint);
+	public Complaint createComplaint(@PathVariable int id, @RequestBody Complaint complaint, Principal principal) {
+		System.out.println(complaint.getDescription());
+		System.out.println("id: " + id);
+		return cSvc.create(id, complaint, principal);
 	}
 	
-	@PutMapping("complexes/{id}/complaints/{cid}")
-	public Complaint updateComplaint(@PathVariable int id, @PathVariable int cid, @RequestBody Complaint complaint) {
-		return cSvc.update(id, cid, complaint);
+	@PutMapping("complaints/{cid}")
+	public Complaint updateComplaint(@PathVariable int cid, @RequestBody Complaint complaint, Principal principal) {
+		return cSvc.update(cid, complaint, principal);
 	}
 	
-	@DeleteMapping("complexes/{id}/complaints/{cid}")
-	public Boolean destroyComplaint(@PathVariable int id, @PathVariable int cid) {
-		return cSvc.destroy(id, cid);
+	@DeleteMapping("complaints/{id}")
+	public Boolean destroyComplaint(@PathVariable int id, Principal principal) {
+		return cSvc.destroy(id, principal);
 	}
 	
 	//Images
