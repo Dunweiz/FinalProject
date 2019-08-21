@@ -12,16 +12,23 @@ import { ComplexService } from 'src/app/services/complex.service';
 })
 export class ComplexComponent implements OnInit {
   complex;
+  lat;
+  long;
+
   constructor(private fetch: FetchCallsService, private complexSvc: ComplexService,
               private router: Router) { }
   async ngOnInit() {
     try {
     const locat = await this.fetch.location;
     let address;
+    this.lat = locat.results[0].geometry.location.lat;
+    this.long = locat.results[0].geometry.location.lng;
     if (locat.results.length) {
       const data = locat.results[0].formatted_address;
       address = data.split(', ');
       console.log(address);
+      console.log('lat', this.lat);
+      console.log('long', this.long);
       if (address.length === 4) {
         this.complexSvc.searchApartment(address[0]).subscribe(
           data2 => {
