@@ -3,9 +3,8 @@
     <div class="content">
       <h1 style="padding-top: 200px">Apartment Shamer</h1>
       <form (submit)="search()" style="padding-top: 40px">
-        <input type="text" name="locationSearch" size="60"
-        placeholder="Search Apartments by Name, City, Street"[(ngModel)]="locationSearch" />
-        <button>Search</button>
+          <input ngx-google-places-autocomplete [options]='options' #placeRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
+          <button>Search</button>
       </form>
       <br>
   <ngb-carousel *ngIf="images">
@@ -46,3 +45,4 @@
 
 </div>
 </div>
+
