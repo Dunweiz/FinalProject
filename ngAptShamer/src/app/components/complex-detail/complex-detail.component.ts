@@ -40,4 +40,8 @@ complex: Complex = new Complex();
   viewComplaint(id: number) {
     this.router.navigateByUrl(`/complexes/${this.complex.id}/complaints/${id}`);
   }
+
+  createNew() {
+    this.router.navigateByUrl(`complexes/${this.complex.id}/complaints`);
+  }
 }

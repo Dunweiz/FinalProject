@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Complaint } from '../models/complaint';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -43,7 +43,7 @@ export class ComplaintService {
   // *********************  DO NOT LEAVE AS IS!!!! FIX THIS HARDCODED URL   *************
   // ************************************************************************************
   getComplaintById(complexId: number, complaintId: number) {
-    return this.http.get<Complaint>('http://localhost:8091/api/complexes/' + complexId + '/complaints/' + complaintId)
+    return this.http.get<Complaint>(this.url + complexId + '/complaints/' + complaintId)
       .pipe(
         catchError((err: any) => {
           console.log(err);

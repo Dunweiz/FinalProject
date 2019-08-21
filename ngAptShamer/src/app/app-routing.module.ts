@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { TemplateComponent } from './components/template/template.component';
 import { ComplexComponent } from './components/complex/complex.component';
+import { ComplaintFormComponent } from './components/complaint-form/complaint-form.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'complexes', component: ComplexComponent},
   { path: 'complexes/:id', component: ComplexDetailComponent},
   { path: 'complexes/:id/complaints/:cid', component: ComplaintComponent },
-  { path: 'register', component: RegisterComponent},
+  { path: 'complexes/:id/complaints', component: ComplaintFormComponent},
+
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH
   { path: 'notfound', component: NotFoundComponent }
 ];
