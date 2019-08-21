@@ -15,7 +15,7 @@ export class ComplaintService {
 
   // Fields
 
-  private url = environment.baseUrl + 'api/complexes';
+  private url = environment.baseUrl + '/api/complexes';
 
   // Constructor
 
@@ -43,7 +43,8 @@ export class ComplaintService {
   }
 
   getComplaintById(complexId: number, complaintId: number) {
-    return this.http.get<Complaint>(this.url + complexId + '/complaints/' + complaintId)
+    console.log(this.url);
+    return this.http.get<Complaint>(this.url + '/' + complexId + '/complaints/' + complaintId)
       .pipe(
         catchError((err: any) => {
           console.log(err);

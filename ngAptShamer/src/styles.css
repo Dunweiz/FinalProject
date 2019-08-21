@@ -43,3 +43,8 @@ body, html {
   background-image: linear-gradient(to right, #bdd4e7, #99CCFF);
 }
 
+.complex {
+  text-align: center;
+  left: 50%;
+  overflow-y: scroll;
+}
