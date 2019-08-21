@@ -1,3 +1,4 @@
+import { ComplaintComponent } from './components/complaint/complaint.component';
 import { ComplexDetailComponent } from './components/complex-detail/complex-detail.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'template', component: TemplateComponent },
   { path: 'complexes', component: ComplexComponent},
   { path: 'complexes/:id', component: ComplexDetailComponent},
+  { path: 'complexes/:id/complaints/:cid', component: ComplaintComponent },
   { path: 'complexes/:id/complaints', component: ComplaintFormComponent},
 
   // NOT FOUND COMPONENT IS CATCH ALL, MUST REMAIN LAST PATH

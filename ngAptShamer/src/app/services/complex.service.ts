@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
 })
 export class ComplexService {
   url = environment.baseUrl + '/api/complexes/';
-
+  
   constructor(private http: HttpClient) { }
 
   searchApartment(apt: string) {
