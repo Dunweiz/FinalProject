@@ -59,9 +59,9 @@ public class ComplaintController {
 		return cSvc.create(id, complaint, principal);
 	}
 	
-	@PutMapping("complexes/{id}/complaints/{cid}")
-	public Complaint updateComplaint(@PathVariable int id, @PathVariable int cid, @RequestBody Complaint complaint) {
-		return cSvc.update(id, cid, complaint);
+	@PutMapping("complaints/{cid}")
+	public Complaint updateComplaint(@PathVariable int cid, @RequestBody Complaint complaint, Principal principal) {
+		return cSvc.update(cid, complaint, principal);
 	}
 	
 	@DeleteMapping("complaints/{id}")

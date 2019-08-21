@@ -1,11 +1,27 @@
-<div>
-  <h1>{{complaint.title}}</h1>
-  <p>{{complaint.description}}</p>
-  <ul *ngFor="let pic of complaint.images">
+
+
+
+
+
+<div *ngIf="editComplaint === null">
+  <h1>{{complaints.title}}</h1>
+  <p>{{complaints.description}}</p>
+  <ul *ngFor="let pic of complaints.images">
     <li><img src="{{pic.imageUrl}}" /></li>
   </ul>
-  <ul *ngFor="let comment of complaint.comments">
+  <ul *ngFor="let comment of complaints.comments">
       <li>{{comment}}</li>
     </ul>
-    <button (click)="delete(complaint.id)"> Delete </button>
+    <button (click)="delete(complaints.id)"> Delete </button>
+    <button (click)="setEdit()"> Update </button>
 </div>
+
+<form id="editComplaint" *ngIf="editComplaint">
+  Complaint: <input type="text" name="title" [(ngModel)]="editComplaint.title"><br>
+  Description of Complaint: <input type="text" name="description" [(ngModel)]="editComplaint.description"><br>
+  Complaint Resolved: <input type="checkbox" name="isResolved" [(ngModel)]="editComplaint.isResolved">
+  Date Resolved: <input type="date" name="resolved" [(ngModel)]="editComplaint.resolved"><br>
+  Details of Fixed Complaint: <input type="text" name="resolution" [(ngModel)]="editComplaint.resolution"><br>
+  <button (click)=" updateComplaint(editComplaint)">Save</button>
+  <button (click)="  editComplaint = null;">Cancel</button>
+</form>

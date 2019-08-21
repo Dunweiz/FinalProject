@@ -13,7 +13,7 @@ public interface ComplaintService {
 	
 	public Complaint create(int id, Complaint complaint, Principal principal);
 	
-	public Complaint update(int id, int cid, Complaint complaint);
+	public Complaint update(int cid, Complaint complaint, Principal principal);
 	
 	public Boolean destroy(int id, Principal principal);
 }

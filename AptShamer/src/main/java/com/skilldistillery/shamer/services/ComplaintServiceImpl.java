@@ -54,17 +54,20 @@ public class ComplaintServiceImpl implements ComplaintService {
 		return complaint;
 	}
 
-	public Complaint update(int id, int cid, Complaint complaint) {
-		complaint.setComplex(cRepo.findById(id).get());
+	public Complaint update(int cid, Complaint complaint, Principal principal) {
+		User user = uRepo.findByUsername(principal.getName());
 		Complaint newComplaint = repo.findById(cid).get();
-		if (newComplaint != null) {
-			newComplaint.setComplex(complaint.getComplex());
-			newComplaint.setCreated(complaint.getCreated());
-			newComplaint.setDescription(complaint.getDescription());
-			newComplaint.setResolution(complaint.getResolution());
-			newComplaint.setResolved(complaint.getResolved());
-			newComplaint.setTitle(complaint.getTitle());
-			repo.saveAndFlush(newComplaint);
+		if (user.getProfile().getId() == newComplaint.getUserProfile().getId()) {
+			if (newComplaint != null) {
+				//newComplaint.setComplex(complaint.getComplex());
+				newComplaint.setCreated(complaint.getCreated());
+				newComplaint.setDescription(complaint.getDescription());
+				newComplaint.setResolution(complaint.getResolution());
+				newComplaint.setResolved(complaint.getResolved());
+				newComplaint.setIsResolved(complaint.isResolved());
+				newComplaint.setTitle(complaint.getTitle());
+				repo.saveAndFlush(newComplaint);
+			}
 		}
 		return newComplaint;
 	}

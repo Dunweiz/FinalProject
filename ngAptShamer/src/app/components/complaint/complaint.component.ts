@@ -10,7 +10,9 @@ import { ComplaintService } from 'src/app/services/complaint.service';
 })
 export class ComplaintComponent implements OnInit {
 
-  complaint: Complaint = new Complaint();
+  editComplaint: Complaint = null;
+
+  complaints: Complaint = new Complaint();
 
   constructor(private router: Router,
               private complaintSvc: ComplaintService,
@@ -29,7 +31,7 @@ export class ComplaintComponent implements OnInit {
       this.complaintSvc.getComplaintById(complexId, complaintId).subscribe(
         good => {
           console.log(good);
-          this.complaint = good;
+          this.complaints = good;
         },
         bad => {
           console.log(bad);
@@ -56,4 +58,24 @@ export class ComplaintComponent implements OnInit {
       }
   }
 
+  setEdit() {
+    this.editComplaint = Object.assign({}, this.complaints);
+  }
+
+  updateComplaint(complaint: Complaint) {
+    const urlId = this.route.snapshot.paramMap.get('cid');
+    const id = this.route.snapshot.paramMap.get('id');
+    if (urlId) {
+      this.complaintSvc.update(complaint.id, complaint).subscribe (
+        good => {
+          console.log(good);
+          this.router.navigateByUrl(`complexes/${parseInt(id, 10)}`);
+        },
+        bad => {
+          console.log(bad);
+          this.router.navigateByUrl(`complexes/${parseInt(id, 10)}/complaints/${parseInt(urlId, 10)}`);
+        }
+      );
+    }
+  }
 }
