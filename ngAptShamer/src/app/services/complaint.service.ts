@@ -33,12 +33,23 @@ export class ComplaintService {
     };
 
     return this.http
-      // .post<Complaint>('http://localhost:8091/api/complexes/' + id + '/complaints', complaint, httpOptions)
-      .post<Complaint>(this.url + '/' + id + '/complaints', complaint, httpOptions)
+      .post<Complaint>(this.url + id + '/complaints', complaint, httpOptions)
       .pipe(
         catchError((err: any) => {
           console.log(err);
           return throwError('ComplaintService.index(): error retrieving complaint list');
+        })
+      );
+  }
+
+  getComplaintById(complexId: number, complaintId: number) {
+    return this.http.get<Complaint>(this.url + complexId + '/complaints/' + complaintId)
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            'Error on ComplexService getComplaintById'
+          );
         })
       );
   }

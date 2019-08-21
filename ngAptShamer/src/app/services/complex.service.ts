@@ -8,8 +8,13 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ComplexService {
+<<<<<<< HEAD
   url = environment.baseUrl + 'api/complexes';
 
+=======
+  url = environment.baseUrl + '/api/complexes/';
+  
+>>>>>>> master
   constructor(private http: HttpClient) { }
 
   searchApartment(apt: string) {
