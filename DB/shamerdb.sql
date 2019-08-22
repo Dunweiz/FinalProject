@@ -269,6 +269,7 @@ INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`
 INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (8, 8, 8, 'mitransplant@domain.com', 'Michigan', 'Dude', 'MITransplant', 'https://previews.123rf.com/images/yupiramos/yupiramos1709/yupiramos170910632/85494509-thief-dangerous-in-the-house-avatar-character-vector-illustration-design.jpg');
 INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (9, 9, 9, 'therugtiestheroomtogether@gmail.com', 'Stoner', 'Stoner', 'Stoner', 'https://pickaface.net/gallery/avatar/hugobt205271488a31e87.png');
 INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (10, 10, 10, 'iminbettershapethanyou@yahoo.com', 'Ultra', 'Marathon', 'LookAtMyMuscles', 'https://thumbs.dreamstime.com/z/muscle-man-icon-avatar-muscle-man-icon-over-white-background-vector-illustration-136106040.jpg');
+INSERT INTO `user_profile` (`id`, `complex_id`, `user_id`, `email`, `first_name`, `last_name`, `display_name`, `image_url`) VALUES (11, 10, 11, 'imagenius@yahoo.com', 'Genius', 'Person', 'ImSmart', 'https://ahpinstitute.com/wp-content/uploads/2016/02/brain.jpg');
 
 COMMIT;
 
