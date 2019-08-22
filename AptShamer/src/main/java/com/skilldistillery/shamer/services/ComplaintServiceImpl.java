@@ -85,4 +85,15 @@ public class ComplaintServiceImpl implements ComplaintService {
 		return deleted;
 	}
 
+	@Override
+	public List<Complaint> userComplaints(int id, Principal principal) {
+		User user = uRepo.findByUsername(principal.getName());
+		if(user.getRole().equals("admin")) {
+			List<Complaint> userComplaints = repo.findAllByUserProfileId(id);
+			return userComplaints;
+		}
+		
+		return null;
+	}
+
 }

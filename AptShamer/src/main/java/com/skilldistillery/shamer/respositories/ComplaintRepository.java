@@ -9,4 +9,6 @@ import com.skilldistillery.shamer.entities.Complaint;
 public interface ComplaintRepository extends JpaRepository <Complaint, Integer>{
 
 	List<Complaint> findByComplex_Id(int id);
+
+	List<Complaint> findAllByUserProfileId(int id);
 }
