@@ -1,15 +1,15 @@
-<div class="bg-color" style="height: 200%">
-  <div class="complaint" style="padding-top: 50px" *ngIf="editComplaint === null">
-  <div>
+<!-- <div class="bg-container"> -->
+  <div class="bg-color" style="height: 100%">
+  <!-- <div class="content"> -->
+    <div class="complaint" style="padding-top: 50px" *ngIf="editComplaint === null">
+
     <h3>{{complaints.title}}</h3>
     <p>{{complaints.description}}</p>
-    <!-- <div class="image-container"> -->
       <div class="wrapper">
         <div  *ngFor="let pic of complaints.images">
           <img class="image" src="{{pic.imageUrl}}"/>
         </div>
       </div>
-    </div>
     <br><br>
        <h4>Comments on this complaint:</h4>
        <ul *ngFor="let comment of complaints.comments">
@@ -17,8 +17,9 @@
      </ul>
      <button class="button" (click)="delete(complaints.id)"> Delete </button>
      <button class="button" (click)="setEdit()"> Update </button>
-  </div>
-
+    </div>
+  <div>
+<!-- </div> -->
 <form id="editComplaint" *ngIf="editComplaint">
   Complaint: <input type="text" name="title" [(ngModel)]="editComplaint.title"><br>
   Description of Complaint: <input type="text" name="description" [(ngModel)]="editComplaint.description"><br>
