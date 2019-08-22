@@ -249,6 +249,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `en
 INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (8, 'michigantransplant', 'trans', NULL, 'user', true);
 INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (9, 'stoner', 'stoner', NULL, 'user', true);
 INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (10, 'ultramarathon', 'ultra', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (11, 'zheng', '$2a$10$UJN8uo65fYMnSMbk5LC8Ju.0RFoMAHIsQBFE66CxGeSPmtutWWr.u', NULL, 'admin', true);
 
 COMMIT;
 
@@ -405,6 +406,7 @@ INSERT INTO `user_complex_rating` (`id`, `user_profile_id`, `complex_id`, `comme
 
 COMMIT;
 
+
 START TRANSACTION;
 USE `shamedb`;
 UPDATE user SET user_profile_id = 1 WHERE id = 1;
@@ -417,5 +419,7 @@ UPDATE user SET user_profile_id = 7 WHERE id = 7;
 UPDATE user SET user_profile_id = 8 WHERE id = 8;
 UPDATE user SET user_profile_id = 9 WHERE id = 9;
 UPDATE user SET user_profile_id = 10 WHERE id = 10;
+UPDATE user SET user_profile_id = 11 WHERE id = 11;
 
 COMMIT;
+

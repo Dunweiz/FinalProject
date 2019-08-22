@@ -3,7 +3,7 @@
     <div class="content">
       <h1 style="padding-top: 200px">Apartment Shamer</h1>
       <form (submit)="search()" style="padding-top: 40px">
-          <input ngx-google-places-autocomplete [options]='options' #placeRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
+          <input size=60 ngx-google-places-autocomplete [options]='options' #placeRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
           <button>Search</button>
       </form>
       <br>
