@@ -24,6 +24,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AptComplaintsComponent } from './apt-complaints/apt-complaints.component';
 import { ComplexDetailComponent } from './components/complex-detail/complex-detail.component';
 import { ComplaintComponent } from './components/complaint/complaint.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +44,7 @@ import { ComplaintComponent } from './components/complaint/complaint.component';
     CardComponent,
     AptComplaintsComponent,
     ComplexDetailComponent,
-    ComplaintComponent
+    ComplaintComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,10 @@ import { ComplaintComponent } from './components/complaint/complaint.component';
     FormsModule,
     HttpClientModule,
     FlexLayoutModule,
+    GooglePlaceModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC1QyU_ZlCoLj2GWxT-UrlV00noX0jTxVs'
+    })
 
   ],
   providers: [

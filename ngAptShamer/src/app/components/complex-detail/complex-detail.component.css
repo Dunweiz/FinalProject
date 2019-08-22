@@ -1,3 +1,6 @@
+agm-map {
+  height: 200px;
+}
 .contact {
   text-align: center;
 }
@@ -10,5 +13,4 @@
 
 #clickme:hover {
   background-color: #56ACED;
-  ;
 }

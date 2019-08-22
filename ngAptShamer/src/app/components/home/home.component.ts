@@ -10,8 +10,13 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  formattedAddress = '';
+  options = {
+    componentRestrictions: {
+      country: ['US']
+    }
+  };
 
-  locationSearch = '';
   images = [
     // tslint:disable-next-line: max-line-length
     // 'https://cdn.vox-cdn.com/thumbor/u2VxfDNZGeYg_mtU8zaZOHN7czE=/0x0:1921x1081/1820x1213/filters:focal(808x388:1114x694):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/54665147/Broadway_and_Magnolia_apartments_1.0.jpg',
@@ -31,15 +36,19 @@ export class HomeComponent implements OnInit {
   }
 
   async search() {
-    const search = await this.fetchSvc.searchByApartment(this.locationSearch);
-    console.log(search);
+    const search = await this.fetchSvc.searchByApartment(this.formattedAddress);
     let location = null;
     if (search.results.length) {
-      console.log(search);
       location = search.results[0].formatted_address;
     }
-    console.log(location);
     this.router.navigateByUrl(`/complexes`);
   }
+
+  // @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+
+  public handleAddressChange(address: any) {
+    this.formattedAddress = address.formatted_address;
+
+}
 
 }

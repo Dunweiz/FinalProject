@@ -25,12 +25,13 @@ export class ComplexService {
   }
 
   searchCity(city: string) {
+    console.log(this.url)
     return this.http.get<Complex[]>(this.url + '/' + city)
       .pipe(
         catchError((err: any) => {
           console.log(err);
           return throwError(
-            'Error on ComplexService searchApartment'
+            'Error on ComplexService searchCity'
           );
         })
       );
