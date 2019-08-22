@@ -20,7 +20,7 @@
           <li id="comment">{{comment.text}}</li>
      </ul>
      <button class="button" (click)="delete(complaints.id)" *ngIf="loggedIn() === true"> Delete </button>
-     <button class="button" (click)="setEdit()" *ngIf="loggedIn() === true"> Update </button>
+     <button class="button" (click)="setEdit()" *ngIf="loggedIn()"> Update </button>
     </div>
 
     <!-- <div class="content" style="padding-top: 50px">
