@@ -26,6 +26,7 @@ import { ComplexDetailComponent } from './components/complex-detail/complex-deta
 import { ComplaintComponent } from './components/complaint/complaint.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from '@agm/core';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { AgmCoreModule } from '@agm/core';
     AptComplaintsComponent,
     ComplexDetailComponent,
     ComplaintComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
