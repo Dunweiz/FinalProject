@@ -3,13 +3,14 @@
       <h2>Add A Complaint</h2>
 
 
-<form>
-    <input type="text" name="tasks" placeholder="Enter a brief title" size="50" [(ngModel)]="newComp.title"><br>
-    <br>
-    <input type="text" name="description" placeholder="Enter a description" size="50" style="height: 200px" [(ngModel)]="newComp.description">
-    <br>
-    <br>
-    <input class="button" type="submit" value="Add New Complaint" (click)="create()">
-</form>
-</div>
+    <form>
+        <input type="text" name="tasks" placeholder="Enter a brief title" size="50" [(ngModel)]="newComp.title"><br>
+        <br>
+        <!-- <input type="text" name="description" placeholder="Enter a description" size="50" style="height: 200px" [(ngModel)]="newComp.description"> -->
+        <textarea rows="10" cols="50" name="description" placeholder="Enter a description" [(ngModel)]="newComp.description"></textarea>
+        <br>
+        <br>
+        <input class="button" type="submit" value="Add New Complaint" (click)="create()">
+    </form>
+  </div>
 </div>
