@@ -1,9 +1,15 @@
+<div class="bg-container">
+    <div class="content" id="complaint" style="padding-top: 200px">
+      <h2>Add A Complaint</h2>
 
-<!-- Create -->
 
 <form>
-    <input type="text" name="tasks" [(ngModel)]="newComp.title">
-    <input type="text" name="description" [(ngModel)]="newComp.description">
-    <input type="submit" value="Add New Complaint" (click)="create()">
+    <input type="text" name="tasks" placeholder="Enter a brief title" size="50" [(ngModel)]="newComp.title"><br>
+    <br>
+    <input type="text" name="description" placeholder="Enter a description" size="50" style="height: 200px" [(ngModel)]="newComp.description">
+    <br>
+    <br>
+    <input class="button" type="submit" value="Add New Complaint" (click)="create()">
 </form>
-
+</div>
+</div>

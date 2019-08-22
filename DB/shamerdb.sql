@@ -347,7 +347,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `shamedb`;
-INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (1, 1, 'https://lh3.googleusercontent.com/ePMv1RtUbs2NlLRy5HhlQzIdXaCMGa4eFW22143Ts8aehqJRmfLEAE7QoVW-13RgtACjARw=s85');
+INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (1, 1, 'https://www.sandatlas.org/wp-content/uploads/Arkose-00184.jpg');
 INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (2, 1, 'http://www.thefossilforum.com/uploads/monthly_03_2010/post-1836-12677677858118_thumb.jpg');
 INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (3, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP1zb7LqZNPVCu1HhZZZyMYfQ5hXLaUsRoW_wHqqVucVfRZeWO');
 INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (4, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqnoqTq8VznIFC-Op5vUTLo0kfYX04yBghXZxQDYyxz6swVrTM2g');
@@ -419,4 +419,3 @@ UPDATE user SET user_profile_id = 9 WHERE id = 9;
 UPDATE user SET user_profile_id = 10 WHERE id = 10;
 
 COMMIT;
-
