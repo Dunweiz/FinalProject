@@ -4,6 +4,8 @@ body, html {
   height: 100%;
   margin:0;
   padding:0;
+  background-image: linear-gradient(to right, #bdd4e7, #99CCFF);
+  /* background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0)); */
 }
 
 .bg-container{
@@ -16,8 +18,11 @@ body, html {
   z-index: 999;
   position: relative;
   text-align: center;
+  height: 100vh;
   width: 100%;
   opacity: 1;
+  overflow: auto;
+  /* overflow-y: scroll; */
 }
 
 .bg-container::after {
@@ -39,6 +44,7 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .bg-color {
