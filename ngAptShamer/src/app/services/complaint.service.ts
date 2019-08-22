@@ -15,7 +15,7 @@ export class ComplaintService {
 
   // Fields
 
-  private url = environment.baseUrl + 'api/complexes';
+  private url = environment.baseUrl + '/api/complexes';
 
   // Constructor
 
@@ -32,7 +32,7 @@ export class ComplaintService {
       })
     };
     console.error(complaint.description);
-    console.log(httpOptions);
+    console.log(this.url + '/' + '/complaints');
 
 
 
