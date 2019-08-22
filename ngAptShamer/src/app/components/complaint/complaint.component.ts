@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Complaint } from 'src/app/models/complaint';
@@ -14,9 +15,12 @@ export class ComplaintComponent implements OnInit {
 
   complaints: Complaint = new Complaint();
 
+  errorMessageText = '';
+
   constructor(private router: Router,
               private complaintSvc: ComplaintService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private auth: AuthService ) { }
 
   ngOnInit() {
     this.displayComplaint();
@@ -31,6 +35,9 @@ export class ComplaintComponent implements OnInit {
       this.complaintSvc.getComplaintById(complexId, complaintId).subscribe(
         good => {
           console.log(good);
+          if (typeof good.isResolved === 'undefined') {
+            good.isResolved = false;
+          }
           this.complaints = good;
         },
         bad => {
@@ -58,24 +65,33 @@ export class ComplaintComponent implements OnInit {
       }
   }
 
+  loggedIn = function() {
+    return this.auth.checkLogin();
+  }
+
   setEdit() {
     this.editComplaint = Object.assign({}, this.complaints);
   }
 
   updateComplaint(complaint: Complaint) {
-    const urlId = this.route.snapshot.paramMap.get('cid');
-    const id = this.route.snapshot.paramMap.get('id');
-    if (urlId) {
-      this.complaintSvc.update(complaint.id, complaint).subscribe (
-        good => {
-          console.log(good);
-          this.router.navigateByUrl(`complexes/${parseInt(id, 10)}`);
-        },
-        bad => {
-          console.log(bad);
-          this.router.navigateByUrl(`complexes/${parseInt(id, 10)}/complaints/${parseInt(urlId, 10)}`);
+    if (complaint.resolution) {
+        const urlId = this.route.snapshot.paramMap.get('cid');
+        const id = this.route.snapshot.paramMap.get('id');
+        if (urlId) {
+          this.complaintSvc.update(complaint.id, complaint).subscribe (
+            good => {
+              console.log(good);
+              this.router.navigateByUrl(`complexes/${parseInt(id, 10)}`);
+            },
+            bad => {
+              console.log(bad);
+              this.router.navigateByUrl(`complexes/${parseInt(id, 10)}/complaints/${parseInt(urlId, 10)}`);
+            }
+          );
         }
-      );
+    }
+    else {
+      this.errorMessageText = "Complaint Form Must Be Filled Out";
     }
   }
 }

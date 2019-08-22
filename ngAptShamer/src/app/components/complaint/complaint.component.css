@@ -1,7 +1,7 @@
 .complaint {
   margin-left: 30%;
   margin-right: 30%;
-  text-align: center;
+  text-align: left;
 }
 
 #comment {
@@ -23,3 +23,16 @@
   height: 300px;
 }
 
+p {
+  margin-left: 40%;
+  text-align: left;
+  font-size: 125%;
+  font-weight: 500;
+}
+
+#update {
+  font-weight: 500;
+  font-size: 125%;
+  width:70%;
+  margin-left:20%;
+}

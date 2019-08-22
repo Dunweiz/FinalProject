@@ -15,7 +15,8 @@
       <a id="clickme" style="color: blue; text-decoration: underline;" (click)="viewComplaint(complaint.id)">{{complaint.title}}</a><br>
       Problem description: {{complaint.description}}<br>
       Date reported: {{complaint.created | date :'shortDate'}}<br>
-      <br>
+      <span *ngIf="complaint.resolved">Date resolved: {{complaint.resolved | date:'shortDate'}}</span>
+      <br><br>
     </div>
 
 <!-- Create New Complaint Button -->

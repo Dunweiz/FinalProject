@@ -33,7 +33,7 @@ body, html {
   /* The image used */
   /* background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg"); */
   background-image: url("https://profiles.sulekha.com/mstore/24036103/albums/default/thumbnailfull/flats.jpg");
-  opacity: .4;
+  opacity: .3;
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -60,4 +60,9 @@ body, html {
 .button:hover {
   background-color:darkgreen;
   color: white;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
 }
