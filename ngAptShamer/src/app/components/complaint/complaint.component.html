@@ -15,12 +15,12 @@
         </div>
      </div>
     <br>
-       <h4 *ngIf="complaints.comment">Comments on this complaint:</h4>
+       <h4 *ngIf="complaints.comments">Comments on this complaint:</h4>
        <ul *ngFor="let comment of complaints.comments">
-          <li id="comment">{{comment.text}}</li>
+          <li>{{comment.text}}</li>
      </ul>
-     <button class="button" (click)="delete(complaints.id)" *ngIf="loggedIn() === true"> Delete </button>
-     <button class="button" (click)="setEdit()" *ngIf="loggedIn()"> Update </button>
+     <button class="button" (click)="delete(complaints.id)" *ngIf="sameUser === true"> Delete </button>
+     <button class="button" (click)="setEdit()" *ngIf="sameUser === true"> Update </button>
     </div>
 
     <!-- <div class="content" style="padding-top: 50px">

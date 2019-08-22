@@ -20,7 +20,6 @@ public class User {
 	private String role;
 	private Boolean enabled;
 	
-	
 	@OneToOne
 	@JoinColumn(name="user_profile_id")
 	private UserProfile profile;

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -29,7 +31,6 @@ public class Complaint {
 	private Complex complex;
 	
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name="user_profile_id")
 	private UserProfile userProfile;
 	
@@ -38,7 +39,7 @@ public class Complaint {
 	private Date created;
 	
 	@Column(name="resolved_date")
-	@CreationTimestamp
+	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date resolved;
 	
 	private String title;
@@ -54,6 +55,7 @@ public class Complaint {
 	@OneToMany(mappedBy="complaint")
 	private List<Image> images;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="complaint")
 	private List<Comment> comments;
 	
