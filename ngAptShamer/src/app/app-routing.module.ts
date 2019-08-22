@@ -1,3 +1,4 @@
+import { AdminComponent } from './components/admin/admin.component';
 import { AptComplaintsComponent } from './apt-complaints/apt-complaints.component';
 import { CardComponent } from './components/card/card.component';
 import { ComplaintComponent } from './components/complaint/complaint.component';
@@ -15,6 +16,7 @@ import { ComplaintFormComponent } from './components/complaint-form/complaint-fo
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'admin', component: AdminComponent},
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent },

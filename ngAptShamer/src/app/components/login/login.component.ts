@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
 
   login: User = new User();
 
+  user: any;
+
   ngOnInit() {
   }
 
@@ -22,7 +24,9 @@ export class LoginComponent implements OnInit {
     this.authSrv.login(this.login.username, this.login.password).subscribe(
       next => {
         console.log(next);
-        this.router.navigateByUrl('/home');
+        this.user = next;
+        console.log(this.user);
+        this.checkLogin(this.user);
       },
       error => {
         console.log(error);
@@ -30,5 +34,16 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  checkLogin(user) {
+    console.log(user)
+    if (user.authorities[0].authority === 'admin') {
+      this.router.navigateByUrl('/admin');
+    } else {
+      this.router.navigateByUrl('/home');
+    }
+  }
+
+
 
 }
