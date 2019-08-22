@@ -249,6 +249,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `en
 INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (8, 'michigantransplant', 'trans', NULL, 'user', true);
 INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (9, 'stoner', 'stoner', NULL, 'user', true);
 INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (10, 'ultramarathon', 'ultra', NULL, 'user', true);
+INSERT INTO `user` (`id`, `username`, `password`, `user_profile_id`, `role`, `enabled`) VALUES (11, 'zheng', '$2a$10$UJN8uo65fYMnSMbk5LC8Ju.0RFoMAHIsQBFE66CxGeSPmtutWWr.u', NULL, 'admin', true);
 
 COMMIT;
 
@@ -347,7 +348,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `shamedb`;
-INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (1, 1, 'https://lh3.googleusercontent.com/ePMv1RtUbs2NlLRy5HhlQzIdXaCMGa4eFW22143Ts8aehqJRmfLEAE7QoVW-13RgtACjARw=s85');
+INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (1, 1, 'https://www.sandatlas.org/wp-content/uploads/Arkose-00184.jpg');
 INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (2, 1, 'http://www.thefossilforum.com/uploads/monthly_03_2010/post-1836-12677677858118_thumb.jpg');
 INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (3, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP1zb7LqZNPVCu1HhZZZyMYfQ5hXLaUsRoW_wHqqVucVfRZeWO');
 INSERT INTO `image` (`id`, `complaint_id`, `image_url`) VALUES (4, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqnoqTq8VznIFC-Op5vUTLo0kfYX04yBghXZxQDYyxz6swVrTM2g');
@@ -405,6 +406,7 @@ INSERT INTO `user_complex_rating` (`id`, `user_profile_id`, `complex_id`, `comme
 
 COMMIT;
 
+
 START TRANSACTION;
 USE `shamedb`;
 UPDATE user SET user_profile_id = 1 WHERE id = 1;
@@ -417,6 +419,7 @@ UPDATE user SET user_profile_id = 7 WHERE id = 7;
 UPDATE user SET user_profile_id = 8 WHERE id = 8;
 UPDATE user SET user_profile_id = 9 WHERE id = 9;
 UPDATE user SET user_profile_id = 10 WHERE id = 10;
+UPDATE user SET user_profile_id = 11 WHERE id = 11;
 
 COMMIT;
 

@@ -16,4 +16,6 @@ public interface ComplaintService {
 	public Complaint update(int cid, Complaint complaint, Principal principal);
 	
 	public Boolean destroy(int id, Principal principal);
+	
+	public List<Complaint> userComplaints(int id, Principal  principal);
 }

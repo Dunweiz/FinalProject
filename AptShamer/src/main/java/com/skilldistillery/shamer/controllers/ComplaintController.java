@@ -69,6 +69,11 @@ public class ComplaintController {
 		return cSvc.destroy(id, principal);
 	}
 	
+	@GetMapping("complaints/user/{id}")
+	public List<Complaint> userComplaints(@PathVariable int id, Principal principal) {
+		return cSvc.userComplaints(id, principal);
+	}
+	
 	//Images
 	@GetMapping("complaints/{id}/images")
 	public List<Image> imagesOfComplaints(@PathVariable int id) {
