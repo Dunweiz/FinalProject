@@ -1,3 +1,4 @@
+import { NavigationComponent } from './../navigation/navigation.component';
 import { AdminService } from './../../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -17,10 +18,11 @@ export class AdminComponent implements OnInit {
 
   userComplaints: Complaint[] = null;
 
-  constructor(private adminSvc: AdminService) { }
+  constructor(private adminSvc: AdminService, private nav: NavigationComponent) { }
 
   ngOnInit() {
     this.loadUsers();
+    this.nav.setUser();
   }
 
   loadUsers() {

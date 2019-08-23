@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
+import { LoginComponent } from '../login/login.component';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-navigation',
@@ -10,15 +12,23 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-
   admin: User = new User();
 
-  userIsAdmin = null;
+  user: User = new User();
 
-  constructor(private auth: AuthService, private router: Router, private userSvc: UserService) { }
+  userIsAdmin = false;
+
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private userSvc: UserService
+  ) {}
 
   ngOnInit() {
-    this.checkAdmin();
+    this.setUser();
+    this.userIsAdmin = this.checkAdmin();
+    // location.reload();
+    // this.userIsAdmin = false;
   }
 
   loggedIn = function() {
@@ -26,29 +36,34 @@ export class NavigationComponent implements OnInit {
   };
 
   logout = function() {
+    this.userIsAdmin = false;
     return this.auth.logout();
   };
 
-  checkAdmin() {
+  setUser() {
     if (this.auth.checkLogin()) {
-     const user = this.auth.getCredentials();
-     console.log(user);
-     const username = this.auth.returnUserName(user);
-     this.userSvc.getUser(username).subscribe (
-       good => {
-         console.log(good);
-         this.admin = good;
-         if (this.admin.role === 'admin') {
-           this.userIsAdmin = true;
-         } else {
-           this.userIsAdmin = false;
-         }
+      const user = this.auth.getCredentials();
+      console.log(user);
+      const username = this.auth.returnUserName(user).split(':');
+      console.log(username[0]);
+      this.userSvc.getUser(username[0]).subscribe(
+        good => {
+          // console.log(good);
+          // this.user = good;
+          // this.userIsAdmin = good.role === 'admin';
+          good.role === 'admin' ? this.userIsAdmin = true : this.userIsAdmin = false;
+          console.log(this.userIsAdmin);
         },
         bad => {
           console.log(bad);
-          this.userIsAdmin = false;
+          return false;
         }
         );
-    }
+      }
   }
+
+  checkAdmin() {
+    return this.userIsAdmin;
+  }
+
 }
