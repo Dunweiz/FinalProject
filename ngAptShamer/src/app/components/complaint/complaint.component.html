@@ -1,5 +1,5 @@
 <div class="bg-container">
-    <div class="content" style="padding-top: 100px;" position=absolute *ngIf="editComplaint === null">
+    <div class="content" style="padding-top: 100px;" *ngIf="editComplaint === null">
 
     <h4>Complaint: {{complaints.title}}</h4>
     <p>Description of issue:     {{complaints.description}}</p>
@@ -14,7 +14,7 @@
     </div>
     <br>
        <h4 *ngIf="complaints.comments">Comments on this complaint:</h4>
-       <ul *ngFor="let comment of complaints.comments">
+       <ul id="comment" *ngFor="let comment of complaints.comments">
           <li>{{comment.text}}</li>
      </ul>
      <button class="button" (click)="delete(complaints.id)" *ngIf="sameUser === true"> Delete </button>
