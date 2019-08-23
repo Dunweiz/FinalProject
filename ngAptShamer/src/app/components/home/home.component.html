@@ -3,8 +3,8 @@
     <div class="content">
       <h1 style="padding-top: 200px">Apartment Shamer</h1>
       <form (submit)="search()" style="padding-top: 40px">
-          <input size=60 ngx-google-places-autocomplete [options]='options' #placeRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
-          <button>Search</button>
+          <input size=58 ngx-google-places-autocomplete [options]='options' #placeRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
+          <button class="button">Search</button>
       </form>
       <br>
   <ngb-carousel *ngIf="images">
@@ -13,29 +13,18 @@
         <img [src]="images[0]"
         width="550" alt="first slide">
       </div>
-      <!-- <div class="carousel-caption">
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </div> -->
+
     </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <img [src]="images[1]" width="550" alt="second slide">
       </div>
-      <!-- <div class="carousel-caption">
-        <h3>Second slide label</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div> -->
     </ng-template>
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
-          <img [src]="images[2]" width="550" alt="third slide">
-        </div>
-        <!-- <div class="carousel-caption">
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div> -->
-      </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[2]" width="550" alt="third slide">
+      </div>
+    </ng-template>
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <img [src]="images[3]" width="550" alt="fourth slide">
