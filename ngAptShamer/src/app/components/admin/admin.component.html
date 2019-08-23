@@ -1,6 +1,5 @@
-<p>admin works!</p>
 
-<div>
+<div  style="padding-top: 55px">
   <table class="table table-hover table-bordered">
       <thead class="thead-dark">
         <th> ID </th>
@@ -14,10 +13,10 @@
         <td>{{user.username}}</td>
         <td>{{user.role}}</td>
         <td>
-            <button *ngIf="!user.enabled" (click)="makeUserEnabled(user)">Enable User</button>
-            <button *ngIf="user.enabled" (click)="makeUserDisabled(user)">Disable User</button>
+            <button class="button" *ngIf="!user.enabled" (click)="makeUserEnabled(user)">Enable User</button>
+            <button class="button" *ngIf="user.enabled" (click)="makeUserDisabled(user)">Disable User</button>
         </td>
-        <td> <button (click) ="showAllUserComplaints(user)">Show All Complaints</button></td>
+        <td> <button class="button" (click) ="showAllUserComplaints(user)">Show All Complaints</button></td>
       </tbody>
   </table>
 </div>
