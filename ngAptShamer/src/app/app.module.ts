@@ -1,3 +1,4 @@
+import { AdminService } from './services/admin.service';
 import { CardComponent } from './components/card/card.component';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { ComplexService } from './services/complex.service';
@@ -65,7 +66,8 @@ import { AdminComponent } from './components/admin/admin.component';
     FetchCallsService,
     AuthService,
     ComplexService,
-    ComplaintService
+    ComplaintService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })
