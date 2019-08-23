@@ -5,7 +5,7 @@
     <p>Description of issue:     {{complaints.description}}</p>
     <p>Was this taken care of?     {{complaints.isResolved ? 'Yes' : 'Not Yet'}}</p>
     <p>Date resolved:     {{complaints.resolved | date :'shortDate'}}</p>
-    <p>Resolution:     {{complaints.resolution ? complaints.resolution : 'We have yet to know!'}}</p>
+    <p>Resolution:     {{complaints.resolution ? complaints.resolution : 'We will find out!'}}</p>
 
     <div class="wrapper">
       <div  *ngFor="let pic of complaints.images">
