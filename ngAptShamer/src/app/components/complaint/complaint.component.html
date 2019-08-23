@@ -1,26 +1,24 @@
 <div class="bg-container">
-  <!-- <div class="bg-color" style="height: 100%"> -->
-  <!-- <div class="content"> -->
-    <div class="content" style="padding-top: 100px" *ngIf="editComplaint === null">
+    <div class="content" style="padding-top: 100px;" *ngIf="editComplaint === null">
 
-    <h2>Complaint: {{complaints.title}}</h2>
+    <h4>Complaint: {{complaints.title}}</h4>
     <p>Description of issue:     {{complaints.description}}</p>
     <p>Was this taken care of?     {{complaints.isResolved ? 'Yes' : 'Not Yet'}}</p>
     <p>Date resolved:     {{complaints.resolved | date :'shortDate'}}</p>
     <p>Resolution:     {{complaints.resolution ? complaints.resolution : 'We have yet to know!'}}</p>
 
     <div class="wrapper">
-        <div  *ngFor="let pic of complaints.images">
-          <img class="image" src="{{pic.imageUrl}}"/>
-        </div>
-     </div>
+      <div  *ngFor="let pic of complaints.images">
+        <img class="image" src="{{pic.imageUrl}}"/>
+      </div>
+    </div>
     <br>
-       <h4 *ngIf="complaints.comment">Comments on this complaint:</h4>
+       <h4 *ngIf="complaints.comments">Comments on this complaint:</h4>
        <ul *ngFor="let comment of complaints.comments">
-          <li id="comment">{{comment.text}}</li>
+          <li>{{comment.text}}</li>
      </ul>
-     <button class="button" (click)="delete(complaints.id)" *ngIf="loggedIn() === true"> Delete </button>
-     <button class="button" (click)="setEdit()" *ngIf="loggedIn()"> Update </button>
+     <button class="button" (click)="delete(complaints.id)" *ngIf="sameUser === true"> Delete </button>
+     <button class="button" (click)="setEdit()" *ngIf="sameUser === true"> Update </button>
     </div>
 
     <!-- <div class="content" style="padding-top: 50px">

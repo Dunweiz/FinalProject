@@ -1,3 +1,4 @@
+import { UserService } from './services/user.service';
 import { CardComponent } from './components/card/card.component';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { ComplexService } from './services/complex.service';
@@ -26,6 +27,7 @@ import { ComplexDetailComponent } from './components/complex-detail/complex-deta
 import { ComplaintComponent } from './components/complaint/complaint.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from '@agm/core';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import { AgmCoreModule } from '@agm/core';
     AptComplaintsComponent,
     ComplexDetailComponent,
     ComplaintComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,10 +63,13 @@ import { AgmCoreModule } from '@agm/core';
 
   ],
   providers: [
-    FetchCallsService,
     AuthService,
+    UserService,
+    FetchCallsService,
     ComplexService,
-    ComplaintService
+    ComplaintService,
+    NavigationComponent,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })
