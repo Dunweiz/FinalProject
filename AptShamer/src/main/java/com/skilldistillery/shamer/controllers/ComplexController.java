@@ -45,7 +45,7 @@ public class ComplexController {
 	
 	@PostMapping("complexes")
 	public Complex create(HttpServletRequest req, HttpServletResponse res, @RequestBody Complex complex, Principal principal) {
-		return svc.create(complex);
+		return svc.create(complex, principal);
 	}
 	
 	@PutMapping("complexes/{id}")
