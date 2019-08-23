@@ -32,7 +32,7 @@ export class ComplaintService {
       })
     };
     console.error(complaint.description);
-    console.log(this.url + '/' + '/complaints');
+    console.log(this.url + '/' + id + '/complaints');
     console.log(complaint.resolved);
 
 

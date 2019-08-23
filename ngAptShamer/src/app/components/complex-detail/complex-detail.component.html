@@ -23,3 +23,6 @@
     <button class="button" (click)="createNew()" *ngIf="loggedIn() === true"> Create New Complaint </button>
   </div>
 </div>
+<agm-map [latitude]="lat" [longitude]="long" >
+  <agm-marker [latitude]="lat" [longitude]="long" [label]=""></agm-marker>
+</agm-map>

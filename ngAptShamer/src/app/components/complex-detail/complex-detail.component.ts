@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ComplexService } from 'src/app/services/complex.service';
 import { Complex } from 'src/app/models/complex';
+import { FetchCallsService } from 'src/app/services/fetch-calls.service';
 
 @Component({
   selector: 'app-complex-detail',
@@ -12,9 +13,12 @@ import { Complex } from 'src/app/models/complex';
 })
 export class ComplexDetailComponent implements OnInit {
 
+  lat;
+  long;
 complex: Complex = new Complex();
 
   constructor(private router: Router,
+              private fetch: FetchCallsService,
               private complexSvc: ComplexService,
               private route: ActivatedRoute,
               private auth: AuthService ) { }
@@ -23,7 +27,11 @@ complex: Complex = new Complex();
     this.displayComplex();
   }
 
-  displayComplex() {
+  async displayComplex() {
+    const locat = await this.fetch.location;
+    console.log(locat);
+    this.lat = locat.results[0].geometry.location.lat;
+    this.long = locat.results[0].geometry.location.lng;
     const urlId = this.route.snapshot.paramMap.get('id');
     if (urlId) {
       this.complexSvc.getComplexById(parseInt(urlId, 10)).subscribe(
