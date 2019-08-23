@@ -34,10 +34,25 @@ export class ComplexComponent implements OnInit {
         this.complexSvc.searchApartment(address[0]).subscribe(
           data2 => {
             this.complex = data2;
-            this.router.navigateByUrl(`complexes/${data2[0].id}`);
+            if (data2[0]) {
+              this.router.navigateByUrl(`complexes/${data2[0].id}`);
+            }  else {
+              this.complexSvc.createComplex(address).subscribe(
+                good => {
+                  console.log(good);
+                  this.router.navigateByUrl(`complexes/${good.id}`);
+
+                },
+                bad => {
+                  console.log(bad);
+                }
+              );
+            }
+
           },
           error => {
             console.log(error);
+
           }
         );
       }  else {

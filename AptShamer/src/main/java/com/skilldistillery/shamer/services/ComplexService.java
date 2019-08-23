@@ -1,5 +1,6 @@
 package com.skilldistillery.shamer.services;
 
+import java.security.Principal;
 import java.util.List;
 
 import com.skilldistillery.shamer.entities.Complex;
@@ -12,7 +13,7 @@ public interface ComplexService {
 
 	Complex show(int id);
 
-	Complex create(Complex complex);
+	Complex create(Complex complex, Principal principal);
 
 	Complex update(int id, Complex complex);
 	

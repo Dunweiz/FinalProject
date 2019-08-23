@@ -1,18 +1,24 @@
 package com.skilldistillery.shamer.services;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.shamer.entities.Complex;
+import com.skilldistillery.shamer.entities.User;
 import com.skilldistillery.shamer.respositories.ComplexRepository;
+import com.skilldistillery.shamer.respositories.UserRepository;
 
 @Service
 public class ComplexServiceImpl implements ComplexService {
 
 	@Autowired
 	private ComplexRepository repo;
+	
+	@Autowired
+	private UserRepository uRepo;
 	
 	@Override
 	public List<Complex> index() {
@@ -25,8 +31,14 @@ public class ComplexServiceImpl implements ComplexService {
 	}
 	
 	@Override
-	public Complex create(Complex complex) {
+	public Complex create(Complex complex, Principal principal) {
+		User user = uRepo.findByUsername(principal.getName());
+		if(user != null) {
 		return repo.saveAndFlush(complex);
+		} else {
+			return null;
+		}
+		
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent implements OnInit {
   formattedAddress = '';
+  errorM;
   options = {
     componentRestrictions: {
       country: ['US']
@@ -36,14 +37,18 @@ export class HomeComponent implements OnInit {
   }
 
   async search() {
+
     const search = await this.fetchSvc.searchByApartment(this.formattedAddress);
     console.log(search);
     let location = null;
     if (search.results.length) {
       location = search.results[0].formatted_address;
       console.log(location);
+      this.router.navigateByUrl(`/complexes`);
+    } else {
+      this.errorM = 'No such location exist';
     }
-    this.router.navigateByUrl(`/complexes`);
+
   }
 
   // @ViewChild("placesRef") placesRef : GooglePlaceDirective;
