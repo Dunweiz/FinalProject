@@ -1,4 +1,5 @@
 import { AdminService } from './services/admin.service';
+import { UserService } from './services/user.service';
 import { CardComponent } from './components/card/card.component';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { ComplexService } from './services/complex.service';
@@ -63,11 +64,14 @@ import { AdminComponent } from './components/admin/admin.component';
 
   ],
   providers: [
-    FetchCallsService,
     AuthService,
+    UserService,
+    FetchCallsService,
     ComplexService,
     ComplaintService,
-    AdminService
+    AdminService,
+    NavigationComponent,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })
