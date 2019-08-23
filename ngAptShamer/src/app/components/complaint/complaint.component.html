@@ -1,7 +1,7 @@
-<div class="bg-container">
+<div class="bg-color">
     <div class="content" style="padding-top: 100px;" *ngIf="editComplaint === null">
 
-    <h4>Complaint: {{complaints.title}}</h4>
+    <h4 style="text-align: center">Complaint: {{complaints.title}}</h4>
     <p>Description of issue:     {{complaints.description}}</p>
     <p>Was this taken care of?     {{complaints.isResolved ? 'Yes' : 'Not Yet'}}</p>
     <p>Date resolved:     {{complaints.resolved | date :'shortDate'}}</p>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <br>
-       <h4 *ngIf="complaints.comments">Comments on this complaint:</h4>
+       <h4 style="text-align: center" *ngIf="complaints.comments">Comments on this complaint:</h4>
        <ul id="comment" *ngFor="let comment of complaints.comments">
           <li>{{comment.text}}</li>
      </ul>
@@ -36,7 +36,6 @@
     </form>
   </div> -->
 
-  <!-- From Paul -->
   <div class="content" style="padding-top: 150px">
       <form id="editComplaint" *ngIf="editComplaint">
         <h2>Update Complaint</h2>
