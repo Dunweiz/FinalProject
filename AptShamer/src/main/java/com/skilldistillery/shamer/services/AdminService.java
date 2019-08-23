@@ -11,4 +11,6 @@ public interface AdminService {
 	
 	User makeUserActive(int id, User user, Principal principal);
 
+	User findByName(String name, Principal principal);
+
 }

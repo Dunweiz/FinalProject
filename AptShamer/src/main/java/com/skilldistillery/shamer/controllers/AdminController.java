@@ -32,4 +32,10 @@ public class AdminController {
 	public User updateUser(@PathVariable int id, @RequestBody User user, Principal principal) {
 		return svc.makeUserActive(id, user, principal);
 	}
+	
+	@GetMapping("user/{name}")
+	public User getUserByName(Principal principal, @PathVariable String name) {
+		return svc.findByName(name, principal);
+	}
 }
+
