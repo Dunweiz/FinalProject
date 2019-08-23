@@ -42,4 +42,15 @@ public class AdminServiceImpl implements AdminService{
 		return repo.findById(id).get();
 	}
 
+	@Override
+	public User findByName(String name, Principal principal) {
+		User user = repo.findByUsername(principal.getName());
+		if(user != null) {
+			return repo.findByUsername(name);
+			
+		} else {
+			return null;
+		}
+	}
+	
 }

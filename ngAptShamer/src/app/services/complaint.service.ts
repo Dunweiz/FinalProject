@@ -33,7 +33,7 @@ export class ComplaintService {
     };
     console.error(complaint.description);
     console.log(this.url + '/' + '/complaints');
-
+    console.log(complaint.resolved);
 
 
     return this.http

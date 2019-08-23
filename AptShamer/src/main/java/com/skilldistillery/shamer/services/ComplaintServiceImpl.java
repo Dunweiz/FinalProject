@@ -63,8 +63,8 @@ public class ComplaintServiceImpl implements ComplaintService {
 				newComplaint.setCreated(complaint.getCreated());
 				newComplaint.setDescription(complaint.getDescription());
 				newComplaint.setResolution(complaint.getResolution());
-				newComplaint.setResolved(complaint.getResolved());
 				newComplaint.setIsResolved(complaint.isResolved());
+				newComplaint.setResolved(complaint.getResolved());
 				newComplaint.setTitle(complaint.getTitle());
 				repo.saveAndFlush(newComplaint);
 			}

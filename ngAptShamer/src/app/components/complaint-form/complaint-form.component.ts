@@ -37,6 +37,7 @@ export class ComplaintFormComponent implements OnInit {
     const urlId = this.route.snapshot.paramMap.get('id');
     if (urlId) {
       this.newComp.isResolved = false;
+      this.newComp.resolved = null;
       this.complaintSvc.create(this.newComp, (parseInt(urlId, 10))).subscribe (
         good => {
           this.newComp = new Complaint();

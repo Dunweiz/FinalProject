@@ -1,3 +1,6 @@
+import { UserService } from './../../services/user.service';
+import { User } from 'src/app/models/user';
+import { UserProfile } from './../../models/user-profile';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,12 +18,17 @@ export class ComplaintComponent implements OnInit {
 
   complaints: Complaint = new Complaint();
 
+  user: User = new User();
+
+  sameUser = null;
+
   errorMessageText = '';
 
   constructor(private router: Router,
               private complaintSvc: ComplaintService,
               private route: ActivatedRoute,
-              private auth: AuthService ) { }
+              private auth: AuthService,
+              private userSvc: UserService ) { }
 
   ngOnInit() {
     this.displayComplaint();
@@ -39,6 +47,7 @@ export class ComplaintComponent implements OnInit {
             good.isResolved = false;
           }
           this.complaints = good;
+          this.checkUser();
         },
         bad => {
           console.log(bad);
@@ -63,11 +72,7 @@ export class ComplaintComponent implements OnInit {
         }
       );
       }
-  }
-
-  loggedIn = function() {
-    return this.auth.checkLogin();
-  }
+    }
 
   setEdit() {
     this.editComplaint = Object.assign({}, this.complaints);
@@ -89,9 +94,30 @@ export class ComplaintComponent implements OnInit {
             }
           );
         }
+    } else {
+      this.errorMessageText = 'Complaint Form Must Be Filled Out';
     }
-    else {
-      this.errorMessageText = "Complaint Form Must Be Filled Out";
-    }
+  }
+
+  checkUser() {
+   const name = this.auth.returnUserName(this.auth.getCredentials());
+   console.log(name);
+   const username = name.split(':');
+   console.log(username[0]);
+   console.log(this.complaints);
+   this.userSvc.getUser(username[0]).subscribe (
+    good => {
+      console.log(good);
+      this.user = good;
+      if (this.user.profile.id === this.complaints.userProfile.id) {
+       this.sameUser = true;
+      }
+      console.log(this.sameUser);
+    },
+    bad => {
+      console.log(bad);
+      this.sameUser = false;
+      }
+    );
   }
 }
