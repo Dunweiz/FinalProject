@@ -55,7 +55,6 @@ public class Complaint {
 	@OneToMany(mappedBy="complaint")
 	private List<Image> images;
 
-	@JsonIgnore
 	@OneToMany(mappedBy="complaint")
 	private List<Comment> comments;
 	
