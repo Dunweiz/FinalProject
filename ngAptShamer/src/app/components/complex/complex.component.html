@@ -8,6 +8,7 @@
         <img width=700 src="{{c.imageUrl}}" (click)="viewComplex(c.id)" />
      </div>
 </div>
-<agm-map [latitude]="lat" [longitude]="long" >
+<agm-map [latitude]="lat" [longitude]="long">
+    <agm-marker *ngFor="let point of coordinates" [latitude]="point.geometry.location.lat" [longitude]="point.geometry.location.lng" [label]=""></agm-marker>
 
 </agm-map>
