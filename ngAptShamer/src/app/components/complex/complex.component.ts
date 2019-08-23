@@ -44,6 +44,7 @@ export class ComplexComponent implements OnInit {
         this.complexSvc.searchCity(address[0]).subscribe(
           data3 => {
             this.complex = data3;
+            console.log('COMPEX', this.complex);
             data3.map(complex  => {
               this.getData(complex);
             });
@@ -66,10 +67,20 @@ async getData(complex) {
   const data = await response.json();
   const coordinate = data.results[0];
   this.coordinates.push(coordinate);
-  console.log(this.coordinates);
 }
 
   viewComplex(id: number) {
     this.router.navigateByUrl(`/complexes/${id}`);
+  }
+
+  onMouseOver(infoWindow, gm) {
+
+    if (gm.lastOpen != null) {
+        gm.lastOpen.close();
+    }
+
+    gm.lastOpen = infoWindow;
+
+    infoWindow.open();
   }
 }
