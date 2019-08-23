@@ -1,7 +1,7 @@
-<div class="bg-container">
-    <div class="content" style="padding-top: 100px;" position=absolute *ngIf="editComplaint === null">
+<div class="bg-color">
+    <div class="content" style="padding-top: 100px;" *ngIf="editComplaint === null">
 
-    <h4>Complaint: {{complaints.title}}</h4>
+    <h4 style="text-align: center">Complaint: {{complaints.title}}</h4>
     <p>Description of issue:     {{complaints.description}}</p>
     <p>Was this taken care of?     {{complaints.isResolved ? 'Yes' : 'Not Yet'}}</p>
     <p>Date resolved:     {{complaints.resolved | date :'shortDate'}}</p>
@@ -13,12 +13,14 @@
       </div>
     </div>
     <br>
-       <h4 *ngIf="complaints.comments">Comments on this complaint:</h4>
-       <ul *ngFor="let comment of complaints.comments">
+       <h4 style="text-align: center" *ngIf="complaints.comments">Comments on this complaint:</h4>
+       <ul id="comment" *ngFor="let comment of complaints.comments">
           <li>{{comment.text}}</li>
      </ul>
-     <button class="button" (click)="delete(complaints.id)" *ngIf="sameUser === true"> Delete </button>
-     <button class="button" (click)="setEdit()" *ngIf="sameUser === true"> Update </button>
+      <div class="center">
+        <button class="button" (click)="delete(complaints.id)" *ngIf="sameUser === true"> Delete </button>
+        <button class="button" (click)="setEdit()" *ngIf="sameUser === true"> Update </button>
+      </div>
     </div>
 
     <!-- <div class="content" style="padding-top: 50px">
@@ -36,10 +38,9 @@
     </form>
   </div> -->
 
-  <!-- From Paul -->
   <div class="content" style="padding-top: 150px">
       <form id="editComplaint" *ngIf="editComplaint">
-        <h2>Update Complaint</h2>
+        <h2 style="text-align: center">Update Complaint</h2>
         <table id="update">
           <tr>
             <td align="right">Complaint:</td>
@@ -62,8 +63,10 @@
             <td align="left"><input size=50 type="text" name="resolution" [(ngModel)]="editComplaint.resolution"></td>
           </tr>
         </table>
-    <button class="button" (click)="updateComplaint(editComplaint)">Save</button>
-    <button class="button" (click)="editComplaint = null;">Cancel</button>
+    <div class="center">
+      <button class="button" (click)="updateComplaint(editComplaint)">Save</button>
+      <button class="button" (click)="editComplaint = null;">Cancel</button>
+    </div>
     <br>
     <span class="error"> {{errorMessageText}} </span>
     </form>
