@@ -8,8 +8,13 @@
       {{contact.name}}: {{contact.phone}}; {{contact.email}}<br>
     </div>
     <br>
-    <img width=700 src="{{complex.imageUrl}}"/><br><br>
-    <h6>(Log in and scroll down to add a complaint)</h6>
+    <div class="img-pic-container">
+        <agm-map [latitude]="lat" [longitude]="long" >
+            <agm-marker [latitude]="lat" [longitude]="long" [label]=""></agm-marker>
+          </agm-map>
+          <img class="complex-pic" width=700 src="{{complex.imageUrl}}"/><br><br>
+    </div>
+    <!-- <h6>(Log in and scroll down to add a complaint)</h6> -->
     <br>
     <div class="complaint" *ngFor="let complaint of complex.complaints">
       <a id="clickme" style="color: blue; text-decoration: underline;" (click)="viewComplaint(complaint.id)">{{complaint.title}}</a><br>
@@ -20,9 +25,7 @@
     </div>
 
 <!-- Create New Complaint Button -->
-    <button class="button" (click)="createNew()" *ngIf="loggedIn() === true"> Create New Complaint </button>
+    <button class="button btn-create" (click)="createNew()" *ngIf="loggedIn() === true"> Create New Complaint </button>
   </div>
 </div>
-<agm-map [latitude]="lat" [longitude]="long" >
-  <agm-marker [latitude]="lat" [longitude]="long" [label]=""></agm-marker>
-</agm-map>
+

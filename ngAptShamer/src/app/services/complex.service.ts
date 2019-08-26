@@ -5,6 +5,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Complex } from '../models/complex';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +27,6 @@ export class ComplexService {
   }
 
   searchCity(city: string) {
-    console.log(this.url)
     return this.http.get<Complex[]>(this.url + '/' + city)
       .pipe(
         catchError((err: any) => {
@@ -52,7 +52,7 @@ export class ComplexService {
       );
   }
 
-  createComplex(comp) {
+  async createComplex(comp) {
     console.log(comp)
     const complex = new Complex();
     complex.name = comp[0];

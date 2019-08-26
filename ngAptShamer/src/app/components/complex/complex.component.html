@@ -24,7 +24,7 @@
 </agm-map>
 
     <div class="complex" style="padding-top: 100px" *ngFor="let c of complex">
-      <h3>{{c.name}}</h3>
+      <h3 (click)="viewComplex(c.id)">{{c.name}}</h3>
       {{c.street}}, {{c.city}}, {{c.state}}  {{c.zip}}
       <br>
       <br>

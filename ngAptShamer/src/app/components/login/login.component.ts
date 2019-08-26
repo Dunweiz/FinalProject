@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
   checkLogin(user) {
     console.log(user);
     if (user.authorities[0].authority === 'admin') {
+      // this.router.navigateByUrl('/home');
       location.reload();
-      // this.router.navigateByUrl('/admin');
     } else {
       this.router.navigateByUrl('/home');
     }
