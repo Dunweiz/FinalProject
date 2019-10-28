@@ -13,6 +13,8 @@
 
 ### How to use
 
+http://chanabanana.com:8080/AptShamer/#/home
+
 ### REST API Endpoints
 | HTTP Verb | Resource URI                        | Action                               |
 |-----------|-------------------------------------|--------------------------------------|
